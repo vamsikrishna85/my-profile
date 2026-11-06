@@ -19,18 +19,17 @@
     rate: 1.0,                // 0.8 – 1.2 sounds most natural
     pitch: 1.0,
     followAlong: true,        // scroll to each section as it is narrated
-    // MALE voices only, highest quality first. Matched with "contains", case-insensitive.
+    // FEMALE voices only, highest quality first. Matched with "contains", case-insensitive.
     preferredVoices: [
-      'Microsoft Andrew Online (Natural)', 'Microsoft Guy Online (Natural)',
-      'Microsoft Brian Online (Natural)', 'Microsoft Christopher Online (Natural)',
-      'Microsoft Eric Online (Natural)', 'Microsoft Ryan Online (Natural)',
-      'Microsoft Prabhat Online (Natural)', 'Microsoft Steffan Online (Natural)',
-      'Google UK English Male',
-      'Daniel (Enhanced)', 'Daniel (Premium)', 'Aaron', 'Daniel', 'Rishi', 'Arthur', 'Oliver', 'Alex', 'Tom', 'Fred',
-      'Microsoft Ravi', 'Microsoft George', 'Microsoft Mark', 'Microsoft David'
+      'Microsoft Aria Online (Natural)', 'Microsoft Jenny Online (Natural)',
+      'Microsoft Ava Online (Natural)', 'Microsoft Emma Online (Natural)',
+      'Microsoft Sonia Online (Natural)', 'Microsoft Neerja Online (Natural)',
+      'Google UK English Female', 'Google US English',
+      'Samantha (Enhanced)', 'Ava (Premium)', 'Ava (Enhanced)', 'Samantha',
+      'Karen', 'Serena', 'Moira', 'Tessa', 'Veena', 'Microsoft Heera', 'Microsoft Hazel', 'Microsoft Zira'
     ],
-    // Used to keep female voices out of the selection and the dropdown.
-    femaleVoices: /female|aria|jenny|ava\b|emma|sonia|neerja|libby|michelle|ana\b|natasha|clara|zira|hazel|susan|heera|samantha|karen|serena|moira|tessa|fiona|victoria|veena|allison|kate|nicky|zoe|catherine|isha|google us english/i
+    // Used to keep male voices out of the selection and the dropdown.
+    maleVoices: /\bmale\b|andrew|guy\b|brian|christopher|eric\b|ryan|prabhat|steffan|daniel|aaron|rishi|arthur|oliver|alex\b|tom\b|fred|ravi|george|mark\b|david|james|richard/i
   };
 
   /* ------------------------------------------------------------------ *
@@ -183,16 +182,16 @@
     return s;
   }
 
-  function isMale(v) {
+  function isFemale(v) {
     var n = v.name.toLowerCase();
-    return /\bmale\b/.test(n) || CONFIG.preferredVoices.some(function (p) { return n.indexOf(p.toLowerCase()) !== -1; });
+    return /female/.test(n) || CONFIG.preferredVoices.some(function (p) { return n.indexOf(p.toLowerCase()) !== -1; });
   }
 
   function loadVoices() {
     var all = englishVoices().sort(function (a, b) { return scoreVoice(b) - scoreVoice(a); });
-    var male = all.filter(isMale);
-    // Male voices only; if the device has none, fall back to voices not known to be female.
-    state.voices = male.length ? male : all.filter(function (v) { return !CONFIG.femaleVoices.test(v.name); });
+    var female = all.filter(isFemale);
+    // Female voices only; if the device has none, fall back to voices not known to be male.
+    state.voices = female.length ? female : all.filter(function (v) { return !CONFIG.maleVoices.test(v.name); });
     var saved = store.get('localStorage', 'va-voice');
     var pick = saved && state.voices.filter(function (v) { return v.name === saved; })[0];
     state.voice = pick || state.voices[0] || null;
