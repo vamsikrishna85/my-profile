@@ -1,0 +1,235 @@
+/* Portfolio AI Voice Assistant — all selectors are prefixed .va- so nothing
+   in the existing portfolio styles is affected. */
+.va-root {
+  --va-accent: #1f6feb;
+  --va-accent-2: #14b8c4;
+  --va-bg: rgba(255, 255, 255, 0.94);
+  --va-surface: #f3f6fb;
+  --va-border: rgba(15, 23, 42, 0.1);
+  --va-text: #0f172a;
+  --va-muted: #5b6577;
+  --va-shadow: 0 18px 50px -12px rgba(15, 23, 42, 0.28), 0 4px 14px rgba(15, 23, 42, 0.08);
+  --va-gap: 20px;
+  position: fixed;
+  right: max(var(--va-gap), env(safe-area-inset-right));
+  bottom: max(var(--va-gap), env(safe-area-inset-bottom));
+  z-index: 2147483000;
+  font-family: inherit;
+  color: var(--va-text);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+.va-root.va-dark {
+  --va-accent: #4d8dff;
+  --va-accent-2: #22c7d3;
+  --va-bg: rgba(17, 24, 39, 0.94);
+  --va-surface: #1c2537;
+  --va-border: rgba(255, 255, 255, 0.1);
+  --va-text: #e8edf6;
+  --va-muted: #9aa6ba;
+  --va-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.7), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.va-root *, .va-root *::before, .va-root *::after { box-sizing: border-box; }
+.va-root [hidden] { display: none !important; }
+.va-root button { font-family: inherit; line-height: 1.2; color: inherit; margin: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.va-root button:focus-visible, .va-root select:focus-visible, .va-root input:focus-visible + .va-track {
+  outline: 2px solid var(--va-accent); outline-offset: 2px;
+}
+.va-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Launcher ---------- */
+.va-launcher {
+  position: relative;
+  width: 60px; height: 60px;
+  border: 0; border-radius: 50%;
+  display: grid; place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--va-accent), var(--va-accent-2));
+  box-shadow: 0 10px 26px -6px rgba(31, 111, 235, 0.55), 0 2px 6px rgba(15, 23, 42, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-left: auto;
+}
+.va-launcher:hover { transform: translateY(-2px) scale(1.03); }
+.va-launcher:active { transform: scale(0.96); }
+.va-launcher svg { width: 26px; height: 26px; position: relative; z-index: 1; }
+.va-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid var(--va-accent);
+  opacity: 0; pointer-events: none;
+}
+.va-speaking .va-ring { animation: va-ring 1.8s ease-out infinite; }
+.va-speaking .va-ring2 { animation-delay: 0.9s; }
+@keyframes va-ring {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
+/* ---------- Nudge bubble ---------- */
+.va-nudge {
+  position: absolute; right: 0; bottom: 72px;
+  display: flex; align-items: center; gap: 2px;
+  padding: 4px 4px 4px 4px;
+  background: var(--va-bg);
+  border: 1px solid var(--va-border);
+  border-radius: 999px;
+  box-shadow: var(--va-shadow);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  white-space: nowrap;
+  animation: va-pop 0.35s cubic-bezier(.2,.9,.3,1.2) both;
+}
+.va-nudge::after {
+  content: ""; position: absolute; right: 24px; bottom: -6px;
+  width: 11px; height: 11px; transform: rotate(45deg);
+  background: var(--va-bg);
+  border-right: 1px solid var(--va-border); border-bottom: 1px solid var(--va-border);
+}
+.va-nudge-text {
+  display: flex; align-items: center; gap: 8px;
+  border: 0; background: none; padding: 7px 6px 7px 12px;
+  font-size: 13.5px; font-weight: 500;
+}
+.va-nudge-text svg { flex: none; width: 16px; height: 16px; color: var(--va-accent); }
+.va-nudge-x {
+  border: 0; background: none; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; color: var(--va-muted);
+}
+.va-nudge-x:hover { background: var(--va-surface); }
+.va-nudge-x svg { width: 14px; height: 14px; }
+@keyframes va-pop { from { opacity: 0; transform: translateY(8px) scale(0.96); } to { opacity: 1; transform: none; } }
+
+/* ---------- Panel ---------- */
+.va-panel {
+  position: absolute; right: 0; bottom: 74px;
+  width: 360px;
+  padding: 16px;
+  background: var(--va-bg);
+  border: 1px solid var(--va-border);
+  border-radius: 20px;
+  box-shadow: var(--va-shadow);
+  backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  opacity: 0; transform: translateY(10px) scale(0.98); transform-origin: bottom right;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.va-is-open .va-panel { opacity: 1; transform: none; }
+
+.va-head { display: flex; align-items: center; gap: 12px; }
+.va-orb {
+  flex: none; width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 3px;
+  background: linear-gradient(135deg, var(--va-accent), var(--va-accent-2));
+}
+.va-orb span { width: 3px; height: 8px; border-radius: 2px; background: #fff; opacity: 0.9; }
+.va-speaking .va-orb span { animation: va-wave 0.9s ease-in-out infinite; }
+.va-speaking .va-orb span:nth-child(2) { animation-delay: 0.15s; }
+.va-speaking .va-orb span:nth-child(3) { animation-delay: 0.3s; }
+.va-speaking .va-orb span:nth-child(4) { animation-delay: 0.45s; }
+@keyframes va-wave { 0%, 100% { height: 6px; } 50% { height: 20px; } }
+
+.va-titles { flex: 1; min-width: 0; }
+.va-title { margin: 0; font-size: 15px; font-weight: 650; letter-spacing: -0.01em; }
+.va-status { margin: 1px 0 0; font-size: 12.5px; color: var(--va-muted); display: flex; align-items: center; gap: 6px; }
+.va-status::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--va-muted); opacity: 0.6;
+}
+.va-active-tour .va-status::before { background: #22c55e; opacity: 1; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18); }
+
+.va-icon-btn {
+  flex: none; width: 38px; height: 38px; border-radius: 12px;
+  display: grid; place-items: center;
+  border: 1px solid var(--va-border); background: var(--va-surface);
+  transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+}
+.va-icon-btn:hover { color: var(--va-accent); }
+.va-icon-btn:active { transform: scale(0.94); }
+.va-icon-btn svg { width: 18px; height: 18px; }
+.va-close { border-color: transparent; background: transparent; color: var(--va-muted); }
+
+.va-caption {
+  margin-top: 14px; padding: 12px 14px;
+  background: var(--va-surface); border-radius: 14px;
+  min-height: 92px;
+}
+.va-chapter {
+  margin: 0 0 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--va-accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.va-text { margin: 0; font-size: 14.5px; line-height: 1.5; }
+
+.va-progress { height: 3px; margin: 12px 2px 0; border-radius: 3px; background: var(--va-border); overflow: hidden; }
+.va-progress span {
+  display: block; height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--va-accent), var(--va-accent-2));
+  transition: width 0.4s ease;
+}
+
+.va-chips {
+  display: flex; gap: 6px; overflow-x: auto; margin: 12px -16px 0; padding: 2px 16px 4px;
+  scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+}
+.va-chips::-webkit-scrollbar { display: none; }
+.va-chip {
+  flex: none; padding: 5px 11px; border-radius: 999px;
+  border: 1px solid var(--va-border); background: transparent;
+  font-size: 12.5px; color: var(--va-muted);
+  transition: all 0.15s ease;
+}
+.va-chip:hover { color: var(--va-text); border-color: var(--va-accent); }
+.va-chip.va-on { background: var(--va-accent); border-color: var(--va-accent); color: #fff; }
+
+.va-controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 14px; }
+.va-play {
+  width: 54px; height: 54px; border-radius: 50%; border: 0;
+  display: grid; place-items: center; color: #fff;
+  background: linear-gradient(135deg, var(--va-accent), var(--va-accent-2));
+  box-shadow: 0 8px 20px -6px rgba(31, 111, 235, 0.6);
+  transition: transform 0.15s ease;
+}
+.va-play:hover { transform: scale(1.05); }
+.va-play:active { transform: scale(0.95); }
+.va-play svg { width: 20px; height: 20px; }
+.va-mute[aria-pressed="true"] { color: #e5484d; }
+.va-ask.va-active { color: #fff; background: #e5484d; border-color: #e5484d; animation: va-listen 1.2s ease-in-out infinite; }
+@keyframes va-listen { 50% { box-shadow: 0 0 0 6px rgba(229, 72, 77, 0.2); } }
+
+.va-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--va-border);
+  font-size: 12.5px; color: var(--va-muted);
+}
+.va-switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+.va-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.va-track {
+  position: relative; width: 30px; height: 18px; border-radius: 999px;
+  background: var(--va-border); transition: background 0.2s ease;
+}
+.va-track::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); transition: transform 0.2s ease;
+}
+.va-switch input:checked + .va-track { background: var(--va-accent); }
+.va-switch input:checked + .va-track::after { transform: translateX(12px); }
+.va-voice-wrap { min-width: 0; }
+.va-voice {
+  max-width: 150px; font: inherit; font-size: 12px; color: var(--va-muted);
+  background: transparent; border: 1px solid var(--va-border); border-radius: 8px; padding: 4px 6px;
+  text-overflow: ellipsis;
+}
+.va-dark .va-voice option { background: #1c2537; color: #e8edf6; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 520px) {
+  .va-root { --va-gap: 16px; }
+  .va-launcher { width: 54px; height: 54px; }
+  .va-panel, .va-nudge { position: fixed; left: 12px; right: 12px; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 66px); }
+  .va-panel { width: auto; padding: 14px; border-radius: 18px; }
+  .va-nudge { left: auto; }
+  .va-caption { min-height: 84px; }
+  .va-text { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .va-root *, .va-root *::before, .va-root *::after { animation: none !important; transition: none !important; }
+}
+@media print { .va-root { display: none !important; } }
