@@ -107,7 +107,7 @@
     ]},
     { key: 'contact', label: 'Contact', target: '#contact', lines: [
       "Vamsi Krishna is open to Senior Azure DevOps, SRE, Cloud Platform, and AKS Platform Engineering roles, remote or in Bengaluru, with a 15-day notice period.",
-      "You can email him, connect on LinkedIn or GitHub, or download his resume from this section.",
+      "You can email him, connect on LinkedIn or GitHub, or view his resume from this section.",
       "Thank you for visiting! Feel free to explore, and tap the assistant anytime to hear this tour again."
     ]}
   ];
