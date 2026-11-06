@@ -159,8 +159,8 @@ html.pv-lock body { padding-right: var(--pv-sbw, 0px); }
 }
 
 /* ---- Fullscreen (native) and expanded fallback (iPhone) ---- */
-.pv-dialog:fullscreen { width: 100vw; height: 100vh; border: 0; border-radius: 0; }
-.pv-dialog:-webkit-full-screen { width: 100vw; height: 100vh; border: 0; border-radius: 0; }
+.pv-shell:fullscreen { width: 100%; height: 100%; background: var(--bg-2); }
+.pv-shell:-webkit-full-screen { width: 100%; height: 100%; background: var(--bg-2); }
 .pv-dialog.pv-expanded {
   width: 100vw; height: 100vh; height: 100dvh;
   border: 0; border-radius: 0;
