@@ -498,7 +498,8 @@
     if (fn) { try { var r = fn.call(document); if (r && r.catch) r.catch(function () {}); } catch (e) { /* noop */ } }
   }
   function toggleFullscreen() {
-    var d = ui.dialog;
+    // <dialog> itself can't go fullscreen (Fullscreen spec), so use its inner panel.
+    var d = ui.dialog.querySelector('.pv-shell');
     var req = d.requestFullscreen || d.webkitRequestFullscreen;
     var native = req && (document.fullscreenEnabled || document.webkitFullscreenEnabled);
     if (isFullscreen()) { exitFullscreen(); return; }
