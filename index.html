@@ -1,440 +1,663 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vamsikrishna Gollapudi — Azure DevOps & SRE</title>
-<meta name="description" content="Vamsikrishna Gollapudi — Azure DevOps Engineer and Site Reliability Engineer with 9+ years across Azure infrastructure, AKS, Terraform, GitHub Enterprise and CI/CD.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vamsikrishna Gollapudi — Azure DevOps Engineer &amp; Site Reliability Engineer</title>
+<meta name="description" content="Azure DevOps Engineer and Site Reliability Engineer with 9+ years of IT experience across Azure infrastructure, Terraform, AKS, GitHub Enterprise, CI/CD automation and SRE. Bengaluru, India — open to remote.">
+<meta name="author" content="Vamsikrishna Gollapudi">
+<meta name="theme-color" content="#070b14">
+<link rel="canonical" href="https://vamsikrishna85.github.io/my-profile/">
+<meta property="og:type" content="profile">
 <meta property="og:title" content="Vamsikrishna Gollapudi — Azure DevOps & SRE">
-<meta property="og:description" content="9+ years building reliable Azure platforms: AKS, Terraform, GitHub Actions, SRE.">
+<meta property="og:description" content="Engineering reliable Azure platforms, automated delivery pipelines and scalable cloud infrastructure. 9+ years in IT.">
+<meta property="og:url" content="https://vamsikrishna85.github.io/my-profile/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1220'/%3E%3Cpath d='M8 22 15 9l3 6-4 7z' fill='%232f8cff'/%3E%3Cpath d='M17 22h7l-5-9-2 4z' fill='%2322d3ee'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0b0f17;--bg2:#111726;--card:#141b2b;--line:#222c42;--text:#e6ebf5;--muted:#93a0b8;
-  --accent:#3ee6b0;--accent2:#5aa9ff;--warn:#ffc65a;--glow:rgba(62,230,176,.14);
-  --sans:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
-}
-:root[data-theme="light"]{
-  --bg:#f6f7fb;--bg2:#ffffff;--card:#ffffff;--line:#e2e6ef;--text:#121826;--muted:#5b6578;
-  --accent:#0f9d76;--accent2:#2767d9;--warn:#b7791f;--glow:rgba(15,157,118,.10);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-.mono{font-family:var(--mono)}
-/* grid backdrop */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:56px 56px;opacity:.35;mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%)}
-/* nav */
-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-family:var(--mono);font-weight:500;font-size:15px}
-.logo b{color:var(--accent)}
-.links{display:flex;gap:28px;align-items:center;font-size:14px;color:var(--muted)}
-.links a:hover{color:var(--text)}
-.theme{background:none;border:1px solid var(--line);color:var(--text);width:36px;height:36px;border-radius:10px;cursor:pointer;display:grid;place-items:center}
-.theme:hover{border-color:var(--accent)}
-@media(max-width:760px){.links a{display:none}}
-/* hero */
-.hero{padding:96px 0 72px}
-.status{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--muted);border:1px solid var(--line);padding:6px 14px;border-radius:999px;background:var(--bg2)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
-h1{font-size:clamp(40px,7vw,78px);line-height:1.02;letter-spacing:-.03em;margin:26px 0 18px;font-weight:700}
-h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{font-family:var(--mono);font-size:clamp(14px,1.8vw,17px);color:var(--muted);min-height:28px}
-.role .typed{color:var(--text)}
-.caret{display:inline-block;width:9px;height:1.1em;background:var(--accent);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.lede{max-width:680px;font-size:18px;color:var(--muted);margin:26px 0 34px}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;border:1px solid var(--line);transition:.2s}
-.btn.primary{background:var(--accent);color:#04140e;border-color:var(--accent)}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--glow)}
-.btn:not(.primary):hover{border-color:var(--accent);color:var(--accent)}
-.meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;font-size:14px;color:var(--muted)}
-.meta span{display:flex;align-items:center;gap:8px}
-/* metrics */
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:64px}
-.metric{background:var(--bg2);padding:26px 24px}
-.metric .n{font-size:38px;font-weight:700;letter-spacing:-.02em}
-.metric .n em{font-style:normal;color:var(--accent)}
-.metric .l{font-size:13px;color:var(--muted);font-family:var(--mono);margin-top:4px}
-@media(max-width:820px){.metrics{grid-template-columns:repeat(2,1fr)}}
-/* sections */
-section{padding:88px 0}
-.eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
-h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;line-height:1.1;margin:10px 0 40px}
-.about{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
-.about p{color:var(--muted);font-size:17px;margin-bottom:16px}
-.about p strong{color:var(--text);font-weight:600}
-.term{background:#070a10;border:1px solid var(--line);border-radius:14px;font-family:var(--mono);font-size:13px;color:#c9d4e8;overflow:hidden}
-.term .bar{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid #1b2333}
-.term .bar i{width:11px;height:11px;border-radius:50%;background:#2a3346}
-.term .bar i:nth-child(1){background:#ff5f57}.term .bar i:nth-child(2){background:#febc2e}.term .bar i:nth-child(3){background:#28c840}
-.term pre{padding:18px;white-space:pre-wrap;line-height:1.75}
-.term .p{color:#3ee6b0}.term .k{color:#5aa9ff}.term .s{color:#ffc65a}.term .c{color:#5f6b82}
-@media(max-width:860px){.about{grid-template-columns:1fr}}
-/* competencies chips */
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-.chip{font-size:13.5px;padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:var(--bg2);color:var(--muted);transition:.2s}
-.chip:hover{color:var(--accent);border-color:var(--accent)}
-/* experience */
-.timeline{position:relative;padding-left:32px}
-.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--accent),var(--accent2),transparent)}
-.job{position:relative;margin-bottom:22px}
-.job::before{content:"";position:absolute;left:-31px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-.job.current::before{background:var(--accent);box-shadow:0 0 0 6px var(--glow)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;transition:.25s}
-.card:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
-.job .card{padding:24px 26px}
-.job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;cursor:pointer;align-items:baseline}
-.job h3{font-size:21px;letter-spacing:-.01em}
-.job .co{color:var(--accent2);font-weight:500}
-.job .when{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
-.job .client{font-size:14px;color:var(--muted);margin-top:4px}
-.job .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.job .tags span{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:6px;background:var(--glow);color:var(--accent)}
-.job ul{list-style:none;margin-top:16px;display:grid;gap:9px;overflow:hidden}
-.job li{position:relative;padding-left:20px;color:var(--muted);font-size:15px}
-.job li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
-.job li b{color:var(--text);font-weight:600}
-.job.collapsed ul li:nth-child(n+5){display:none}
-.more{margin-top:12px;background:none;border:none;color:var(--accent);font-family:var(--mono);font-size:13px;cursor:pointer}
-/* projects */
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.proj{padding:26px;display:flex;flex-direction:column}
-.proj .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.proj .kind{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
-.proj h3{font-size:20px;letter-spacing:-.01em;margin-bottom:10px;line-height:1.25}
-.proj p{font-size:14.5px;color:var(--muted);margin-bottom:14px}
-.proj ul{list-style:none;display:grid;gap:7px;margin-bottom:18px}
-.proj li{position:relative;padding-left:18px;font-size:13.5px;color:var(--muted)}
-.proj li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
-.proj .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;margin-bottom:18px}
-.proj .tags span{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:6px;background:var(--glow);color:var(--accent)}
-.proj .repo{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--text)}
-.proj .repo:hover{color:var(--accent)}
-.proj:hover{transform:translateY(-3px)}
-@media(max-width:960px){.projects{grid-template-columns:1fr}}
-/* skills */
-.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.skill{padding:24px}
-.skill .ico{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--glow);color:var(--accent);margin-bottom:14px}
-.skill h4{font-size:17px;margin-bottom:10px}
-.skill p{font-size:14px;color:var(--muted);line-height:1.7}
-@media(max-width:900px){.skills{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.skills{grid-template-columns:1fr}}
-/* certs + edu */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:800px){.two{grid-template-columns:1fr}}
-.list .card{padding:20px 22px;display:flex;gap:16px;align-items:center;margin-bottom:12px}
-.badge{flex:none;width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-family:var(--mono);font-weight:500;font-size:13px;border:1px solid var(--line);background:var(--bg2);color:var(--accent)}
-.list h4{font-size:16px}
-.list p{font-size:13.5px;color:var(--muted)}
-/* contact */
-.contact{text-align:center;padding:96px 0 110px}
-.contact h2{margin-bottom:18px}
-.contact p{color:var(--muted);max-width:560px;margin:0 auto 32px;font-size:17px}
-.contact .cta{justify-content:center}
-footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--muted);font-family:var(--mono)}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-/* reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.dot,.caret{animation:none}}
-svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    var d = document.documentElement; d.classList.add('js');
+    try { var t = localStorage.getItem('vg-theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+      else if (window.matchMedia('(prefers-color-scheme: light)').matches) d.setAttribute('data-theme', 'light'); } catch (e) {}
+    setTimeout(function () { d.classList.add('reveal-all'); }, 2500);
+  })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Vamsikrishna Gollapudi","jobTitle":"Azure DevOps Engineer & Site Reliability Engineer","address":{"@type":"PostalAddress","addressLocality":"Bengaluru","addressCountry":"IN"},"email":"mailto:vamsi.gollapudi85@gmail.com","url":"https://vamsikrishna85.github.io/my-profile/","sameAs":["https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447","https://github.com/vamsikrishna85"],"knowsAbout":["Microsoft Azure","Azure DevOps","Site Reliability Engineering","Kubernetes","Azure Kubernetes Service","Terraform","GitHub Actions","Infrastructure as Code"]}
+</script>
+<script src="main.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
-  <div class="wrap">
-    <a href="#top" class="logo">~/<b>vamsi</b>.gollapudi</a>
-    <div class="links">
-      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#certs">Certifications</a><a href="#contact">Contact</a>
-      <button class="theme" id="theme" aria-label="Toggle theme">
-        <svg id="ti" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H7a5 5 0 1 1 1-9.9A6 6 0 0 1 19.6 11 4 4 0 0 1 17.5 19z"/></symbol>
+    <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 8.5v7M18 10.5c0 4-6 3-11 6"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/><path d="m3 8 9 5 9-5M12 13v8"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 1 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header" id="top">
+  <nav class="nav container" aria-label="Primary">
+    <a class="brand" href="#home" aria-label="Vamsikrishna Gollapudi — home">
+      <span class="brand-mark" aria-hidden="true">VG</span>
+      <span class="brand-text">Vamsikrishna<span class="brand-sub">Azure DevOps · SRE</span></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" data-nav>Home</a></li>
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#expertise" data-nav>Expertise</a></li>
+      <li><a href="#experience" data-nav>Experience</a></li>
+      <li><a href="#work" data-nav>Engineering Work</a></li>
+      <li><a href="#lab" data-nav>Architecture Lab</a></li>
+      <li><a href="#certifications" data-nav>Certifications</a></li>
+      <li><a href="#contact" data-nav>Contact</a></li>
+      <li class="nav-mobile-only"><a class="btn btn-primary btn-block" href="Vamsikrishna_Gollapudi_Resume.pdf" download><svg class="ic"><use href="#i-download"/></svg>Download Resume (PDF)</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme">
+        <svg class="ic ic-sun"><use href="#i-sun"/></svg><svg class="ic ic-moon"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm nav-resume" href="Vamsikrishna_Gollapudi_Resume.pdf" download aria-label="Download resume as PDF"><svg class="ic"><use href="#i-download"/></svg>Resume</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <svg class="ic"><use href="#i-menu"/></svg>
       </button>
     </div>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="wrap">
-    <span class="status"><span class="dot"></span>Available · 15-day notice · Open to remote</span>
-    <h1>Vamsikrishna<br><span class="grad">Gollapudi</span></h1>
-    <div class="role mono">$ whoami → <span class="typed" id="typed"></span><span class="caret"></span></div>
-    <p class="lede">Azure DevOps Engineer &amp; Site Reliability Engineer with <strong style="color:var(--text)">9+ years</strong> turning on-prem estates into reliable, automated Azure platforms — for enterprise clients in life sciences, banking and asset management.</p>
-    <div class="cta">
-      <a class="btn primary" href="mailto:vamsi.gollapudi85@gmail.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Get in touch</a>
-      <a class="btn" href="https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-      <a class="btn" href="#projects"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>View projects</a>
-    </div>
-    <div class="meta">
-      <span><svg viewBox="0 0 24 24"><path d="M12 22s-8-6-8-12a8 8 0 0 1 16 0c0 6-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>Bengaluru, India</span>
-      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>English · Hindi · Telugu</span>
-      <span><svg viewBox="0 0 24 24"><path d="M12 15l-3.5 2 1-4-3-2.7 4-.3L12 6l1.5 4 4 .3-3 2.7 1 4z"/></svg>AZ-104 · AZ-900 · KCNA</span>
-    </div>
-
-    <div class="metrics reveal">
-      <div class="metric"><div class="n"><span data-count="120">0</span><em>+</em></div><div class="l">repos migrated to GHE</div></div>
-      <div class="metric"><div class="n"><span data-count="160">0</span><em>+</em></div><div class="l">servers moved to Azure</div></div>
-      <div class="metric"><div class="n">~<span data-count="35">0</span><em>%</em></div><div class="l">lower MTTR</div></div>
-      <div class="metric"><div class="n"><span data-count="99.95" data-dec="2">0</span><em>%</em></div><div class="l">platform availability</div></div>
-    </div>
-  </div>
+  </nav>
 </header>
 
-<section id="about">
-  <div class="wrap about">
-    <div class="reveal">
-      <div class="eyebrow">01 · About</div>
-      <h2>From the server room<br>to the control plane.</h2>
-      <p>I started as a <strong>Linux and Windows Server administrator</strong>, keeping 150+ systems patched and running at 99.9% uptime. That foundation shaped everything since — Azure infrastructure, CI/CD automation, Kubernetes platform operations and, today, <strong>Site Reliability Engineering</strong>.</p>
-      <p>I build with <strong>Terraform, Bicep, AKS, Helm, GitHub Actions and Azure Pipelines</strong>, and I care about the boring things that make platforms trustworthy: clear documentation, honest SLOs, blameless incident reviews and pipelines that block bad builds before they ship.</p>
-      <p>Along the way I've cut Azure spend by ~18%, raised Defender Secure Score from 62% to 85%, and taken new-service onboarding from three days to under four hours.</p>
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Open to remote · 15-day notice</p>
+      <h1 id="hero-title">
+        <span class="hero-name">Vamsikrishna Gollapudi</span>
+        <span class="hero-role">Azure DevOps Engineer &amp; Site Reliability Engineer</span>
+      </h1>
+      <p class="hero-headline">Engineering reliable Azure platforms, automated delivery pipelines &amp; scalable cloud infrastructure.</p>
+      <p class="hero-sub">9+ years of IT experience across enterprise infrastructure, Azure cloud engineering, CI/CD automation, Kubernetes operations and site reliability engineering — for clients in life sciences, banking and asset management.</p>
+      <ul class="hero-tags" aria-label="Core specializations">
+        <li>Azure</li><li>Azure DevOps</li><li>GitHub Actions</li><li>Terraform</li><li>AKS</li><li>SRE</li>
+      </ul>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="Vamsikrishna_Gollapudi_Resume.pdf" download><svg class="ic"><use href="#i-download"/></svg>Download Resume</a>
+        <a class="btn btn-secondary" href="#experience">View Experience</a>
+        <a class="btn btn-ghost" href="#work">Explore Engineering Work<svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="hero-meta">
+        <span><svg class="ic"><use href="#i-pin"/></svg>Bengaluru, India</span>
+        <a href="https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447" target="_blank" rel="noopener"><svg class="ic"><use href="#i-linkedin"/></svg>LinkedIn</a>
+        <a href="https://github.com/vamsikrishna85" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
+        <a href="#contact"><svg class="ic"><use href="#i-mail"/></svg>Contact me</a>
+      </div>
     </div>
-    <div class="term reveal" aria-label="Profile summary">
-      <div class="bar"><i></i><i></i><i></i></div>
-<pre><span class="p">vamsi@azure</span>:~$ <span class="k">kubectl</span> describe engineer
-<span class="c"># ---</span>
-name:        <span class="s">Vamsikrishna Gollapudi</span>
-role:        <span class="s">Azure DevOps · SRE</span>
-experience:  <span class="s">9+ years</span>
-domains:     [life-sciences, banking,
-              asset-management]
-iac:         [terraform, bicep, arm]
-platform:    [aks, helm, docker, acr]
-ci_cd:       [github-actions, azure-pipelines]
-observe:     [prometheus, grafana,
-              azure-monitor, splunk]
-status:      <span class="p">Ready</span> ✔</pre>
-    </div>
+
+    <figure class="hero-visual" aria-labelledby="hero-visual-cap">
+      <div class="hv-card">
+        <div class="hv-head">
+          <span class="hv-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="mono">platform/delivery-path</span>
+        </div>
+        <svg class="hv-svg" viewBox="0 0 400 430" role="img" aria-labelledby="hv-title hv-desc">
+          <title id="hv-title">Delivery path</title>
+          <desc id="hv-desc">Azure Cloud is provisioned with Terraform, applications ship through GitHub Actions to AKS, and observability closes the feedback loop.</desc>
+          <defs>
+            <linearGradient id="hvg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--teal)"/></linearGradient>
+          </defs>
+          <path class="hv-rail" d="M70 52 V 378"/>
+          <path class="hv-flow" d="M70 52 V 378"/>
+          <path class="hv-loop" d="M30 378 C 6 378, 6 52, 30 52"/>
+          <g class="hv-node" transform="translate(30,26)"><rect width="80" height="52" rx="12"/><use href="#i-cloud" x="28" y="14" width="24" height="24"/></g>
+          <g class="hv-node" transform="translate(30,108)"><rect width="80" height="52" rx="12"/><use href="#i-layers" x="28" y="14" width="24" height="24"/></g>
+          <g class="hv-node" transform="translate(30,190)"><rect width="80" height="52" rx="12"/><use href="#i-git" x="28" y="14" width="24" height="24"/></g>
+          <g class="hv-node" transform="translate(30,272)"><rect width="80" height="52" rx="12"/><use href="#i-box" x="28" y="14" width="24" height="24"/></g>
+          <g class="hv-node hv-node-end" transform="translate(30,352)"><rect width="80" height="52" rx="12"/><use href="#i-activity" x="28" y="14" width="24" height="24"/></g>
+          <g class="hv-text">
+            <text x="128" y="48" class="t1">Azure Cloud</text><text x="128" y="66" class="t2">landing zone · 8 subscriptions</text>
+            <text x="128" y="130" class="t1">Terraform</text><text x="128" y="148" class="t2">modules · remote state · drift checks</text>
+            <text x="128" y="212" class="t1">GitHub Actions</text><text x="128" y="230" class="t2">build · scan · approve · deploy</text>
+            <text x="128" y="294" class="t1">AKS</text><text x="128" y="312" class="t2">Helm · Ingress · HPA · autoscaler</text>
+            <text x="128" y="374" class="t1">Observability</text><text x="128" y="392" class="t2">SLOs · alerts · runbooks</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption id="hero-visual-cap" class="hv-cap mono">Illustrative delivery path — the stack I design and operate</figcaption>
+    </figure>
   </div>
-  <div class="wrap reveal" style="margin-top:56px">
-    <div class="eyebrow" style="margin-bottom:14px">Core competencies</div>
-    <div class="chips">
-      <span class="chip">Azure Infrastructure</span><span class="chip">Azure DevOps</span><span class="chip">Site Reliability Engineering</span><span class="chip">Kubernetes &amp; AKS</span><span class="chip">Terraform &amp; IaC</span><span class="chip">GitHub Enterprise &amp; Actions</span><span class="chip">CI/CD Pipelines</span><span class="chip">DevSecOps</span><span class="chip">Cloud Migration</span><span class="chip">Linux Administration</span><span class="chip">Windows Server &amp; AD</span><span class="chip">Observability &amp; Incident Mgmt</span><span class="chip">Cloud Security &amp; Governance</span><span class="chip">FinOps</span><span class="chip">Disaster Recovery</span>
+
+  <div class="container">
+    <ul class="metric-strip" aria-label="Career highlights">
+      <li class="metric"><span class="metric-val" data-count="9" data-suffix="+">9+</span><span class="metric-lbl">Years in IT</span></li>
+      <li class="metric"><span class="metric-val" data-count="99.95" data-decimals="2" data-suffix="%">99.95%</span><span class="metric-lbl">Platform availability</span></li>
+      <li class="metric"><span class="metric-val" data-count="35" data-prefix="~" data-suffix="%">~35%</span><span class="metric-lbl">MTTR reduction</span></li>
+      <li class="metric"><span class="metric-val" data-count="160" data-suffix="+">160+</span><span class="metric-lbl">Servers migrated to Azure</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">01 · About</p>
+      <h2 id="about-title">From the server room to the control plane.</h2>
+      <p class="lead">I started on racks and consoles — patching RHEL and Windows Server fleets, running Active Directory and troubleshooting production at 2 a.m. That foundation shapes how I build in the cloud today: automate everything that can be automated, measure what matters, and design so the on-call engineer sleeps.</p>
+    </div>
+
+    <ol class="career-path reveal" aria-label="Career progression">
+      <li class="cp-step">
+        <span class="cp-years mono">2015 – 2020</span>
+        <span class="cp-icon" aria-hidden="true"><svg class="ic"><use href="#i-terminal"/></svg></span>
+        <h3>Systems Administration</h3>
+        <p>150+ RHEL, Ubuntu and Windows Server systems for 1,200 users at 99.9% uptime. AD, GPO, DNS, DHCP, patching and Bash automation.</p>
+      </li>
+      <li class="cp-step">
+        <span class="cp-years mono">2020 – 2023</span>
+        <span class="cp-icon" aria-hidden="true"><svg class="ic"><use href="#i-cloud"/></svg></span>
+        <h3>Cloud Infrastructure</h3>
+        <p>Azure migration work streams, landing-zone foundations, hub-and-spoke networking, ARM templates, backup and DR.</p>
+      </li>
+      <li class="cp-step">
+        <span class="cp-years mono">2024 – 2025</span>
+        <span class="cp-icon" aria-hidden="true"><svg class="ic"><use href="#i-git"/></svg></span>
+        <h3>Azure DevOps</h3>
+        <p>Multi-stage YAML pipelines for 35+ banking services, Terraform, Docker, AKS via Helm and DevSecOps quality gates.</p>
+      </li>
+      <li class="cp-step cp-now">
+        <span class="cp-years mono">2025 – Present</span>
+        <span class="cp-icon" aria-hidden="true"><svg class="ic"><use href="#i-activity"/></svg></span>
+        <h3>Site Reliability Engineering</h3>
+        <p>SLIs, SLOs, error budgets, 6 production AKS clusters, observability, incident response and a blameless on-call culture.</p>
+      </li>
+    </ol>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Today I work as a Site Reliability Engineer at <strong>Nexamatic</strong>, operating a multi-subscription Azure landing zone and production AKS platform for life-sciences clients. Before that I built audit-ready release pipelines for a major Canadian bank, migrated and hardened Azure estates for asset-management and pharmaceutical clients, and led migration waves for 120 servers.</p>
+        <p>I'm known for clear documentation, blameless incident reviews and dependable delivery with distributed teams across time zones — and for mentoring engineers who are making the same move from operations into cloud engineering.</p>
+      </div>
+      <ul class="focus-grid reveal" aria-label="Areas of focus">
+        <li>Enterprise Azure environments</li>
+        <li>Cloud migration</li>
+        <li>Infrastructure as Code</li>
+        <li>CI/CD automation</li>
+        <li>Kubernetes operations</li>
+        <li>Reliability engineering</li>
+        <li>Governance &amp; security</li>
+        <li>Monitoring &amp; incident response</li>
+        <li>FinOps &amp; cost optimization</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="experience">
-  <div class="wrap">
-    <div class="eyebrow reveal">02 · Experience</div>
-    <h2 class="reveal">Where I've shipped.</h2>
-    <div class="timeline">
+<!-- ============ EXPERTISE ============ -->
+<section class="section section-alt" id="expertise" aria-labelledby="expertise-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">02 · Expertise</p>
+      <h2 id="expertise-title">The stack I run in production.</h2>
+      <p class="lead">Grouped by the problems they solve — no proficiency bars, just tools I've used to ship and operate real systems.</p>
+    </div>
+    <div class="skill-grid">
+      <article class="skill-card reveal">
+        <header><span class="sk-ic"><svg class="ic"><use href="#i-cloud"/></svg></span><h3>Microsoft Azure</h3></header>
+        <ul class="chips"><li>Virtual Machines</li><li>VMSS</li><li>VNet &amp; Peering</li><li>NSG</li><li>Load Balancer</li><li>Application Gateway</li><li>VPN Gateway</li><li>Azure DNS / Private DNS</li><li>Entra ID</li><li>Key Vault</li><li>Azure Monitor</li><li>Storage</li><li>Azure SQL</li><li>App Service</li><li>Functions</li><li>Logic Apps</li><li>Azure Policy</li></ul>
+      </article>
+      <article class="skill-card reveal">
+        <header><span class="sk-ic"><svg class="ic"><use href="#i-git"/></svg></span><h3>DevOps &amp; CI/CD</h3></header>
+        <ul class="chips"><li>Azure DevOps</li><li>Azure Pipelines</li><li>GitHub Enterprise</li><li>GitHub Actions</li><li>Git</li><li>YAML multi-stage pipelines</li><li>Release management</li><li>Branching strategies</li><li>SonarQube</li><li>Azure Artifacts</li></ul>
+      </article>
+      <article class="skill-card reveal">
+        <header><span class="sk-ic"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Infrastructure as Code</h3></header>
+        <ul class="chips"><li>Terraform</li><li>Modules &amp; remote state</li><li>Workspaces</li><li>Drift detection</li><li>Bicep</li><li>ARM Templates</li><li>Ansible</li></ul>
+      </article>
+      <article class="skill-card reveal">
+        <header><span class="sk-ic"><svg class="ic"><use href="#i-box"/></svg></span><h3>Kubernetes &amp; Containers</h3></header>
+        <ul class="chips"><li>AKS</li><li>Kubernetes</li><li>Docker</li><li>Helm</li><li>ACR</li><li>NGINX Ingress</li><li>HPA</li><li>Cluster Autoscaler</li></ul>
+      </article>
+      <article class="skill-card reveal">
+        <header><span class="sk-ic"><svg class="ic"><use href="#i-activity"/></svg></span><h3>SRE &amp; Observability</h3></header>
+        <ul class="chips"><li>Prometheus</li><li>Grafana</li><li>Azure Monitor</li><li>Application Insights</li><li>Log Analytics</li><li>KQL</li><li>Splunk</li><li>SLIs / SLOs</li><li>Error budgets</li><li>Runbooks &amp; on-call</li><li>Incident management</li><li>RCA</li><li>Capacity planning</li></ul>
+      </article>
+      <article class="skill-card reveal">
+        <header><span class="sk-ic"><svg class="ic"><use href="#i-shield"/></svg></span><h3>Security &amp; Governance</h3></header>
+        <ul class="chips"><li>Azure RBAC</li><li>Azure Policy</li><li>Management Groups</li><li>Defender for Cloud</li><li>Managed Identities</li><li>Conditional Access</li><li>Key Vault</li><li>Secret scanning</li><li>Container image scanning</li><li>SAST</li></ul>
+      </article>
+      <article class="skill-card reveal skill-card-wide">
+        <header><span class="sk-ic"><svg class="ic"><use href="#i-terminal"/></svg></span><h3>Linux, Windows &amp; Automation</h3></header>
+        <ul class="chips"><li>RHEL</li><li>Ubuntu</li><li>systemd · LVM · cron · SSH</li><li>Windows Server 2012–2019</li><li>Active Directory</li><li>Group Policy</li><li>Bash</li><li>PowerShell</li><li>Python</li><li>Azure Migrate</li><li>Azure Site Recovery</li><li>Azure Backup</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
 
-      <div class="job current reveal collapsed">
-        <div class="card">
-          <div class="job-head"><h3>Site Reliability Engineer · <span class="co">Nexamatic</span></h3><span class="when">Jan 2025 — Present</span></div>
-          <div class="client">Bengaluru · Clients: IQVIA, Adamas (Life Sciences)</div>
-          <div class="tags"><span>AKS</span><span>GitHub Enterprise</span><span>Terraform</span><span>Bicep</span><span>Prometheus</span><span>Grafana</span><span>Defender</span></div>
-          <ul>
-            <li>Designed and operated a multi-subscription Azure landing zone (<b>8 subscriptions, 600+ resources</b>), sustaining <b>99.95%</b> platform availability.</li>
-            <li>Led migration of <b>~120 repositories and 45 teams</b> from Azure Repos to GitHub Enterprise with under 30 minutes of total developer downtime and 100% PR review coverage.</li>
-            <li>Converted <b>60+ classic release pipelines</b> into GitHub Actions and reusable YAML templates — onboarding cut from ~3 days to <b>under 4 hours</b>.</li>
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="section section-tight" id="achievements" aria-labelledby="ach-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">Impact</p>
+      <h2 id="ach-title">Outcomes, measured.</h2>
+    </div>
+    <ul class="ach-grid">
+      <li class="ach reveal"><span class="ach-val" data-count="120" data-prefix="~">~120</span><span class="ach-lbl">Repositories migrated to GitHub Enterprise, 45 teams, &lt; 30 min total developer downtime</span></li>
+      <li class="ach reveal"><span class="ach-val" data-count="18" data-prefix="~" data-suffix="%">~18%</span><span class="ach-lbl">Lower monthly Azure spend through VM and storage right-sizing</span></li>
+      <li class="ach reveal"><span class="ach-val" data-count="40" data-suffix="%">40%</span><span class="ach-lbl">Less alert noise across 150+ alert rules</span></li>
+      <li class="ach reveal"><span class="ach-val" data-count="200" data-suffix="+">200+</span><span class="ach-lbl">Vulnerable builds blocked before production by pipeline security gates</span></li>
+      <li class="ach reveal"><span class="ach-val">62→85%</span><span class="ach-lbl">Microsoft Defender for Cloud Secure Score; 98% tagging compliance</span></li>
+      <li class="ach reveal"><span class="ach-val">3d→4h</span><span class="ach-lbl">New-service onboarding time after converting 60+ classic pipelines</span></li>
+      <li class="ach reveal"><span class="ach-val" data-count="100" data-suffix="%">100%</span><span class="ach-lbl">Environments under Infrastructure as Code with nightly drift detection</span></li>
+      <li class="ach reveal"><span class="ach-val">0</span><span class="ach-lbl">Customer-facing outages across quarterly AKS and node-pool upgrades</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section section-alt" id="experience" aria-labelledby="exp-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">03 · Experience</p>
+      <h2 id="exp-title">Where I've shipped.</h2>
+      <p class="lead">Expand any role for the full set of achievements.</p>
+    </div>
+
+    <ol class="timeline">
+      <!-- Nexamatic -->
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <div>
+              <h3>Site Reliability Engineer</h3>
+              <p class="tl-co"><strong>Nexamatic</strong> · Bengaluru, India</p>
+              <p class="tl-client">Clients: IQVIA, Adamas · Life Sciences</p>
+            </div>
+            <p class="tl-date mono"><time datetime="2025-01">Jan 2025</time> – Present</p>
+          </header>
+          <ul class="tl-highlights">
+            <li>Designed and operated a multi-subscription Azure landing zone (<b>8 subscriptions, 600+ resources</b>) sustaining <b>99.95%</b> platform availability.</li>
+            <li>Led the migration of <b>~120 repositories and 45 teams</b> from Azure Repos to GitHub Enterprise with <b>under 30 minutes</b> of total developer downtime.</li>
             <li>Operated <b>6 production AKS clusters</b> (180+ nodes, 300+ pods) with quarterly upgrades and zero customer-facing outages.</li>
-            <li>Authored 25+ versioned Terraform modules and Bicep templates with nightly drift detection, bringing <b>100% of environments</b> under IaC.</li>
             <li>Built an SRE practice on SLIs, SLOs, error budgets and 40+ runbooks, reducing <b>MTTR by ~35%</b>.</li>
-            <li>Implemented Prometheus, Grafana, Azure Monitor and Log Analytics with 150+ alert rules, cutting alert noise by <b>40%</b>.</li>
-            <li>Embedded SAST, image scanning and secret detection into CI/CD, blocking <b>200+ vulnerable builds</b> before production.</li>
-            <li>Raised Defender for Cloud Secure Score from <b>62% to 85%</b>; reached 98% tagging compliance and passed two client audits.</li>
-            <li>Automated cert-expiry alerts and non-prod scale-down with Functions and Logic Apps — ~20 engineer-hours saved monthly, <b>22% lower</b> non-prod compute cost.</li>
-            <li>Ran blameless reviews and on-call for a 10-member team; mentored 4 junior engineers.</li>
-            <li>Published 30+ architecture notes and guides, reducing recurring L2 escalations by 25%.</li>
           </ul>
-          <button class="more">+ show all 12 highlights</button>
-        </div>
-      </div>
+          <details class="tl-more">
+            <summary><svg class="ic"><use href="#i-plus"/></svg><span class="when-closed">Show all 12 achievements</span><span class="when-open">Show fewer</span></summary>
+            <ul>
+              <li>Standardized branch protection and CODEOWNERS to reach 100% pull-request review coverage.</li>
+              <li>Converted 60+ classic release pipelines into GitHub Actions workflows and reusable multi-stage Azure DevOps YAML templates, reducing new-service onboarding from ~3 days to under 4 hours.</li>
+              <li>Authored 25+ versioned Terraform modules and Bicep templates with remote state, policy checks and nightly drift detection, bringing 100% of environments under Infrastructure as Code.</li>
+              <li>Delivered quarterly Kubernetes and node-pool upgrades using Helm, NGINX Ingress, HPA and Cluster Autoscaler with zero customer-facing outages.</li>
+              <li>Implemented Prometheus, Grafana, Azure Monitor and Log Analytics dashboards with 150+ alert rules, routing logs to Splunk and cutting alert noise by 40%.</li>
+              <li>Embedded SAST, container image scanning, secret detection and Key Vault integration into CI/CD pipelines, blocking 200+ vulnerable builds before production.</li>
+              <li>Raised Microsoft Defender for Cloud Secure Score from 62% to 85% and defined tenant-wide governance (management groups, custom RBAC roles, tagging), reaching 98% tagging compliance and passing two client audits without major findings.</li>
+              <li>Automated certificate-expiry alerts, non-production scale-down and ticket creation with Azure Functions and Logic Apps, saving ~20 engineer-hours monthly and reducing non-production compute cost by 22%.</li>
+              <li>Ran blameless post-incident reviews and the on-call rotation for a 10-member team, closing 90% of corrective actions within 30 days, and mentored 4 junior engineers.</li>
+              <li>Published 30+ architecture notes and operational guides, reducing recurring L2 escalations by 25%.</li>
+            </ul>
+          </details>
+          <ul class="chips chips-sm" aria-label="Technologies"><li>Azure</li><li>AKS</li><li>Terraform</li><li>Bicep</li><li>GitHub Enterprise</li><li>GitHub Actions</li><li>Prometheus</li><li>Grafana</li><li>Splunk</li><li>Defender for Cloud</li></ul>
+        </article>
+      </li>
 
-      <div class="job reveal collapsed">
-        <div class="card">
-          <div class="job-head"><h3>Azure DevOps Engineer · <span class="co">Kumaran Systems</span></h3><span class="when">Apr 2024 — Jan 2025</span></div>
-          <div class="client">Bengaluru · Client: CIBC (Banking)</div>
-          <div class="tags"><span>Azure Pipelines</span><span>Terraform</span><span>Docker</span><span>AKS</span><span>SonarQube</span><span>Key Vault</span></div>
-          <ul>
-            <li>Designed build and release pipelines for <b>35+ banking services</b> with approval gates and change checks — <b>100% audit traceability</b>.</li>
-            <li>Increased deployment frequency from bi-weekly to <b>3 releases per week</b> while keeping change-failure rate below 5%.</li>
-            <li>Introduced Terraform across 4 environments, cutting environment setup from ~3 days to <b>4 hours</b>.</li>
-            <li>Secured <b>300+ secrets</b> in Key Vault with managed identities, removing all plain-text credentials from 35 pipelines.</li>
-            <li>Migrated 40 classic release definitions to multi-stage YAML, cutting pipeline maintenance by 50%.</li>
-            <li>Containerized 15 services with Docker and deployed to AKS through Helm-based pipelines.</li>
-            <li>Integrated SonarQube quality gates and dependency scanning, catching 120+ critical vulnerabilities before release.</li>
-            <li>Defined a branching and semantic-versioning strategy for 6 squads — 40% faster hotfix turnaround.</li>
-            <li>Kept rollback time under 15 minutes with versioned packages in Azure Artifacts.</li>
-            <li>Wrote PowerShell and Python health-check and verification scripts, saving ~15 hours of manual effort weekly.</li>
+      <!-- Kumaran -->
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <div>
+              <h3>Azure DevOps Engineer</h3>
+              <p class="tl-co"><strong>Kumaran Systems</strong> · Bengaluru, India</p>
+              <p class="tl-client">Client: CIBC · Banking</p>
+            </div>
+            <p class="tl-date mono"><time datetime="2024-04">Apr 2024</time> – <time datetime="2025-01">Jan 2025</time></p>
+          </header>
+          <ul class="tl-highlights">
+            <li>Designed Azure DevOps build and release pipelines for <b>35+ banking services</b> with approval gates and change-management checks — <b>100% audit traceability</b>.</li>
+            <li>Introduced Terraform across 4 environments, cutting environment setup from <b>~3 days to 4 hours</b>.</li>
+            <li>Raised deployment frequency from <b>bi-weekly to 3 releases per week</b> with change-failure rate below 5%.</li>
+            <li>Secured <b>300+ secrets</b> in Azure Key Vault with managed identities, removing all plain-text credentials from 35 pipelines.</li>
           </ul>
-          <button class="more">+ show all 10 highlights</button>
-        </div>
-      </div>
+          <details class="tl-more">
+            <summary><svg class="ic"><use href="#i-plus"/></svg><span class="when-closed">Show all 10 achievements</span><span class="when-open">Show fewer</span></summary>
+            <ul>
+              <li>Migrated 40 classic release definitions to multi-stage YAML pipelines, cutting pipeline maintenance effort by 50%.</li>
+              <li>Containerized 15 services with Docker, publishing images to Azure Container Registry and deploying to AKS through Helm-based pipelines.</li>
+              <li>Integrated SonarQube quality gates and dependency scanning into pull-request validation, catching 120+ critical vulnerabilities before release.</li>
+              <li>Defined a Git branching and release strategy for 6 squads with semantic versioning, enabling 40% faster hotfix turnaround.</li>
+              <li>Controlled environment promotion through versioned packages in Azure Artifacts, keeping rollback time under 15 minutes.</li>
+              <li>Embedded regression suites with QA to shorten release cycles by ~30%.</li>
+              <li>Wrote PowerShell and Python scripts for health checks, log cleanup and deployment verification, and set up Azure Monitor and Application Insights alerts, saving ~15 hours of manual effort weekly.</li>
+            </ul>
+          </details>
+          <ul class="chips chips-sm" aria-label="Technologies"><li>Azure Pipelines</li><li>YAML</li><li>Terraform</li><li>Docker</li><li>AKS</li><li>Helm</li><li>ACR</li><li>SonarQube</li><li>Key Vault</li><li>Azure Artifacts</li></ul>
+        </article>
+      </li>
 
-      <div class="job reveal collapsed">
-        <div class="card">
-          <div class="job-head"><h3>Cloud Infrastructure Engineer · <span class="co">UST Global</span></h3><span class="when">May 2022 — Jun 2023</span></div>
-          <div class="client">Hyderabad · Client: Schroders (Asset Management)</div>
-          <div class="tags"><span>Azure Migrate</span><span>ASR</span><span>ARM</span><span>Hub-Spoke</span><span>Entra ID</span><span>FinOps</span></div>
-          <ul>
-            <li>Rehosted <b>45 on-prem servers</b> to Azure with Azure Migrate and ASR across 5 waves with <b>zero data loss</b>.</li>
+      <!-- UST -->
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <div>
+              <h3>Cloud Infrastructure Engineer</h3>
+              <p class="tl-co"><strong>UST Global</strong> · Hyderabad, India</p>
+              <p class="tl-client">Client: Schroders · Asset Management</p>
+            </div>
+            <p class="tl-date mono"><time datetime="2022-05">May 2022</time> – <time datetime="2023-06">Jun 2023</time></p>
+          </header>
+          <ul class="tl-highlights">
+            <li>Rehosted <b>45 on-premises servers</b> to Azure with Azure Migrate and ASR across 5 waves with <b>zero data loss</b>.</li>
+            <li>Engineered <b>hub-and-spoke</b> networking with NSGs, load balancers, private DNS and site-to-site VPN to 2 data centers.</li>
+            <li>Implemented Azure Backup and ASR for 60 critical workloads, meeting a <b>4-hour RTO / 15-minute RPO</b> in DR drills.</li>
             <li>Right-sized VMs and storage tiers, lowering monthly Azure spend by <b>~18%</b>.</li>
-            <li>Implemented Backup and Site Recovery for 60 critical workloads, meeting a <b>4-hour RTO / 15-minute RPO</b> in DR drills.</li>
-            <li>Hardened 120+ VMs and 40 storage accounts, raising compliance from <b>70% to 96%</b> in 3 months.</li>
-            <li>Built and supported an Azure IaaS/PaaS estate of 250+ resources.</li>
-            <li>Codified infrastructure in ARM templates across 3 environments, speeding provisioning by 70%.</li>
-            <li>Engineered hub-and-spoke networks with NSGs, load balancers, private DNS and site-to-site VPN to 2 data centers.</li>
-            <li>Removed 150+ excess role assignments in a least-privilege review using Entra ID, Conditional Access and RBAC.</li>
-            <li>Created the first infrastructure pipelines in Azure DevOps, replacing manual releases for 12 teams.</li>
           </ul>
-          <button class="more">+ show all 9 highlights</button>
+          <details class="tl-more">
+            <summary><svg class="ic"><use href="#i-plus"/></svg><span class="when-closed">Show all 9 achievements</span><span class="when-open">Show fewer</span></summary>
+            <ul>
+              <li>Built and supported an Azure IaaS and PaaS environment of 250+ resources, including virtual machines, VM scale sets, App Service, Azure SQL and storage accounts.</li>
+              <li>Codified infrastructure in ARM templates with standard naming, tagging and network layouts across 3 environments, speeding up provisioning by 70%.</li>
+              <li>Managed access with Entra ID groups, Conditional Access and RBAC, removing 150+ excess role assignments during a least-privilege review.</li>
+              <li>Hardened 120+ virtual machines and 40 storage accounts against Defender for Cloud recommendations, raising compliance from 70% to 96% in 3 months.</li>
+              <li>Created the first Azure DevOps pipelines for infrastructure deployment, replacing manual releases for 12 application teams.</li>
+            </ul>
+          </details>
+          <ul class="chips chips-sm" aria-label="Technologies"><li>Azure IaaS/PaaS</li><li>ARM Templates</li><li>Azure Migrate</li><li>Azure Site Recovery</li><li>Azure Backup</li><li>Entra ID</li><li>Defender for Cloud</li></ul>
+        </article>
+      </li>
+
+      <!-- Cognizant -->
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <div>
+              <h3>Tech Lead</h3>
+              <p class="tl-co"><strong>Cognizant</strong> · India</p>
+              <p class="tl-client">Client: Bayer · Life Sciences</p>
+            </div>
+            <p class="tl-date mono"><time datetime="2020-12">Dec 2020</time> – <time datetime="2021-04">Apr 2021</time></p>
+          </header>
+          <ul class="tl-highlights">
+            <li>Led an on-premises-to-Azure migration work stream, assessing <b>180+ servers</b> and dependencies with Azure Migrate.</li>
+            <li>Planned <b>6 migration waves</b> with cutover and rollback runbooks, leading a 5-member team through the lift-and-shift of <b>120 servers</b>.</li>
+            <li>Achieved <b>98% first-attempt cutover success</b>, coordinating validation with 20+ application owners.</li>
+          </ul>
+          <details class="tl-more">
+            <summary><svg class="ic"><use href="#i-plus"/></svg><span class="when-closed">Show all 5 achievements</span><span class="when-open">Show fewer</span></summary>
+            <ul>
+              <li>Set up landing-zone foundations for 3 environments: 12 virtual networks, 2 site-to-site VPN tunnels, storage and identity sync for 5,000+ Active Directory accounts.</li>
+              <li>Reported weekly to the client steering committee.</li>
+              <li>Decommissioned 40 legacy servers after migration, saving an estimated 15% of data-center hosting cost.</li>
+            </ul>
+          </details>
+          <ul class="chips chips-sm" aria-label="Technologies"><li>Azure Migrate</li><li>Landing zones</li><li>Site-to-site VPN</li><li>Active Directory</li><li>Wave planning</li></ul>
+        </article>
+      </li>
+
+      <!-- Anewa -->
+      <li class="tl-item reveal">
+        <div class="tl-marker" aria-hidden="true"></div>
+        <article class="tl-card">
+          <header class="tl-head">
+            <div>
+              <h3>System Administrator (Linux &amp; Windows)</h3>
+              <p class="tl-co"><strong>Anewa Engineering Pvt. Ltd.</strong> · India</p>
+              <p class="tl-client">Client: NPCC</p>
+            </div>
+            <p class="tl-date mono"><time datetime="2015-10">Oct 2015</time> – <time datetime="2020-12">Dec 2020</time></p>
+          </header>
+          <ul class="tl-highlights">
+            <li>Administered <b>150+ RHEL, Ubuntu and Windows Server</b> systems for 1,200 users, maintaining <b>99.9% uptime</b>.</li>
+            <li>Cut average resolution time by <b>30%</b> troubleshooting CPU, memory, disk and service failures.</li>
+            <li>Sustained <b>97% patch compliance</b> with yum, apt and WSUS.</li>
+          </ul>
+          <details class="tl-more">
+            <summary><svg class="ic"><use href="#i-plus"/></svg><span class="when-closed">Show all 6 achievements</span><span class="when-open">Show fewer</span></summary>
+            <ul>
+              <li>Managed Active Directory (1,200+ accounts), Group Policy, file shares, NTFS permissions, DNS and DHCP.</li>
+              <li>Upgraded 30 servers from Windows Server 2008 R2 to 2016 and migrated departmental file shares with no data loss.</li>
+              <li>Wrote Bash and batch scripts for user creation, disk cleanup and log rotation, saving ~10 hours of manual work per week.</li>
+            </ul>
+          </details>
+          <ul class="chips chips-sm" aria-label="Technologies"><li>RHEL</li><li>Ubuntu</li><li>Windows Server</li><li>Active Directory</li><li>WSUS</li><li>Bash</li></ul>
+        </article>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ENGINEERING WORK ============ -->
+<section class="section" id="work" aria-labelledby="work-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">04 · Engineering Work</p>
+      <h2 id="work-title">Selected engineering work.</h2>
+      <p class="lead">Six case studies grounded in delivered outcomes. Client environments are confidential, so diagrams are <em>illustrative reference architectures</em> — the metrics are real.</p>
+    </div>
+    <div class="cs-grid" id="cs-grid"><!-- rendered by main.js; fallback below --></div>
+    <noscript><p class="note">Enable JavaScript to open the detailed case studies. Every outcome is also listed in the Experience section above.</p></noscript>
+
+    <div class="repo-block reveal">
+      <h3 class="repo-title">Open-source reference implementations</h3>
+      <p class="muted">Public repositories that demonstrate the patterns I use — built independently, not client code.</p>
+      <ul class="repo-grid">
+        <li><a class="repo" href="https://github.com/vamsikrishna85/azure-landing-zone-terraform" target="_blank" rel="noopener">
+          <span class="repo-name mono"><svg class="ic"><use href="#i-github"/></svg>azure-landing-zone-terraform</span>
+          <span class="repo-desc">Hub-and-spoke landing zone with policy guardrails and nightly drift detection.</span>
+          <span class="chips chips-sm"><span>Terraform</span><span>Azure Policy</span><span>Checkov</span></span></a></li>
+        <li><a class="repo" href="https://github.com/vamsikrishna85/pharma-platform-devops" target="_blank" rel="noopener">
+          <span class="repo-name mono"><svg class="ic"><use href="#i-github"/></svg>pharma-platform-devops</span>
+          <span class="repo-desc">GitHub Actions with OIDC to Azure, scan gates and Helm deploys to AKS with approvals.</span>
+          <span class="chips chips-sm"><span>GitHub Actions</span><span>AKS</span><span>Trivy</span></span></a></li>
+        <li><a class="repo" href="https://github.com/vamsikrishna85/banking-azure-devops-pipelines" target="_blank" rel="noopener">
+          <span class="repo-name mono"><svg class="ic"><use href="#i-github"/></svg>banking-azure-devops-pipelines</span>
+          <span class="repo-desc">Reusable multi-stage YAML templates with quality gates and approval checks.</span>
+          <span class="chips chips-sm"><span>Azure Pipelines</span><span>YAML</span><span>SonarQube</span></span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHITECTURE LAB ============ -->
+<section class="section section-alt" id="lab" aria-labelledby="lab-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">05 · Architecture Lab</p>
+      <h2 id="lab-title">Explore cloud engineering workflows.</h2>
+      <p class="lead">Interactive reference diagrams. Select any component to see what it does and why it matters operationally.</p>
+    </div>
+
+    <div class="lab reveal">
+      <div class="tabs" role="tablist" aria-label="Architecture diagrams" id="lab-tabs"></div>
+      <div class="lab-body">
+        <div class="lab-canvas" id="lab-canvas"></div>
+        <aside class="lab-detail" id="lab-detail" aria-live="polite"></aside>
+      </div>
+      <div class="lab-foot">
+        <ul class="legend" id="lab-legend" aria-label="Legend"></ul>
+        <p class="disclaimer mono">Educational reference architecture — not a connected production environment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SRE OPS LAB ============ -->
+<section class="section" id="ops" aria-labelledby="ops-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">06 · SRE Operations Lab</p>
+      <h2 id="ops-title">What an incident looks like, end to end.</h2>
+      <p class="lead">A self-contained simulation of a production service: watch an SLO burn, an alert fire, and the response from triage to rollback to postmortem.</p>
+    </div>
+
+    <div class="ops reveal" id="ops-root">
+      <div class="ops-banner" role="note"><strong>SIMULATED DATA — DEMONSTRATION ONLY.</strong> Generated in your browser from a fixed seed. Not connected to Azure, Prometheus, Grafana or any real service.</div>
+      <div class="ops-toolbar">
+        <div class="ops-svc mono"><span class="svc-dot" id="ops-svc-dot"></span>service: <b>checkout-api</b> · cluster: aks-demo-01 · ns: shop</div>
+        <div class="ops-btns">
+          <span class="ops-clock mono" id="ops-clock" aria-label="Simulated clock">T+00:00</span>
+          <button class="btn btn-sm btn-danger" type="button" id="ops-sim">Simulate incident</button>
+          <button class="btn btn-sm btn-secondary" type="button" id="ops-pause" aria-pressed="false">Pause</button>
+          <button class="btn btn-sm btn-ghost" type="button" id="ops-reset">Reset</button>
         </div>
       </div>
 
-      <div class="job reveal">
-        <div class="card">
-          <div class="job-head"><h3>Tech Lead · <span class="co">Cognizant</span></h3><span class="when">Dec 2020 — Apr 2021</span></div>
-          <div class="client">India · Client: Bayer (Life Sciences)</div>
-          <div class="tags"><span>Azure Migrate</span><span>Landing Zone</span><span>Wave Planning</span><span>Team Lead</span></div>
-          <ul>
-            <li>Led an on-prem-to-Azure migration stream, assessing <b>180+ servers</b> and their dependencies.</li>
-            <li>Planned 6 waves with cutover and rollback runbooks, leading a 5-member team through the lift-and-shift of <b>120 servers</b>.</li>
-            <li>Set up landing-zone foundations: 12 VNets, 2 VPN tunnels and identity sync for 5,000+ AD accounts.</li>
-            <li>Achieved <b>98% first-attempt cutover success</b>, reporting weekly to the client steering committee; decommissioned 40 legacy servers (~15% hosting savings).</li>
-          </ul>
+      <ol class="ops-phases" id="ops-phases" aria-label="Incident phases">
+        <li data-phase="normal">Normal</li><li data-phase="degrading">Degradation</li><li data-phase="alert">Alert fires</li><li data-phase="incident">Incident declared</li><li data-phase="investigation">Investigation</li><li data-phase="mitigation">Mitigation</li><li data-phase="recovery">Recovery</li>
+      </ol>
+      <p class="ops-status" id="ops-status" aria-live="polite">All systems nominal. Press “Simulate incident” to begin.</p>
+
+      <div class="ops-kpis">
+        <div class="kpi"><span class="kpi-lbl">Availability (30d)</span><span class="kpi-val mono" id="k-avail">—</span><span class="kpi-sub">SLO 99.9%</span></div>
+        <div class="kpi"><span class="kpi-lbl">p95 latency</span><span class="kpi-val mono" id="k-lat">—</span><span class="kpi-sub">Threshold 400 ms</span></div>
+        <div class="kpi"><span class="kpi-lbl">Error rate</span><span class="kpi-val mono" id="k-err">—</span><span class="kpi-sub">Threshold 1.0%</span></div>
+        <div class="kpi"><span class="kpi-lbl">Throughput</span><span class="kpi-val mono" id="k-rps">—</span><span class="kpi-sub">requests / sec</span></div>
+        <div class="kpi"><span class="kpi-lbl">Burn rate (1h)</span><span class="kpi-val mono" id="k-burn">—</span><span class="kpi-sub">Fast-burn page ≥ 14.4×</span></div>
+      </div>
+
+      <div class="ops-grid">
+        <div class="panel panel-chart">
+          <div class="panel-h"><h3>p95 latency (ms)</h3><span class="mono muted small">1 tick = 5 s simulated</span></div>
+          <svg class="chart" id="chart-lat" viewBox="0 0 600 180" preserveAspectRatio="none" role="img" aria-label="Simulated p95 latency over time"></svg>
+          <div class="panel-h"><h3>Error rate (%)</h3></div>
+          <svg class="chart chart-sm" id="chart-err" viewBox="0 0 600 90" preserveAspectRatio="none" role="img" aria-label="Simulated error rate over time"></svg>
+        </div>
+        <div class="panel">
+          <div class="panel-h"><h3>Error budget</h3><span class="mono muted small">30-day · 43.2 min</span></div>
+          <div class="budget"><div class="budget-bar"><span id="budget-fill"></span></div><p class="mono small"><span id="budget-txt">—</span></p></div>
+          <div class="panel-h"><h3>SLO compliance</h3></div>
+          <ul class="slo-list" id="slo-list"></ul>
+          <div class="panel-h"><h3>Alerts</h3></div>
+          <ul class="alert-list" id="alert-list"></ul>
+        </div>
+        <div class="panel">
+          <div class="panel-h"><h3>Kubernetes workloads</h3><span class="mono muted small">ns: shop</span></div>
+          <div class="table-wrap"><table class="wl-table" id="wl-table"><thead><tr><th scope="col">Deployment</th><th scope="col">Ready</th><th scope="col">Restarts</th><th scope="col">Status</th></tr></thead><tbody></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-h"><h3>Incident timeline</h3></div>
+          <ol class="tl-log mono" id="ops-log"></ol>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="job reveal">
-        <div class="card">
-          <div class="job-head"><h3>System Administrator · <span class="co">Anewa Engineering</span></h3><span class="when">Oct 2015 — Dec 2020</span></div>
-          <div class="client">India · Client: NPCC</div>
-          <div class="tags"><span>RHEL</span><span>Ubuntu</span><span>Windows Server</span><span>Active Directory</span><span>Bash</span></div>
-          <ul>
-            <li>Administered <b>150+ Linux and Windows servers</b> for 1,200 users at <b>99.9% uptime</b>.</li>
-            <li>Managed Active Directory (1,200+ accounts), Group Policy, DNS and DHCP; sustained 97% patch compliance.</li>
-            <li>Upgraded 30 servers from Windows Server 2008 R2 to 2016 with no data loss.</li>
-            <li>Automated user creation, disk cleanup and log rotation with Bash and batch scripts — ~10 hours saved weekly.</li>
-          </ul>
+<!-- ============ CERTIFICATIONS ============ -->
+<section class="section section-alt" id="certifications" aria-labelledby="cert-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker mono">07 · Certifications</p>
+      <h2 id="cert-title">Certified &amp; schooled.</h2>
+    </div>
+    <div class="cert-grid">
+      <article class="cert reveal">
+        <span class="cert-badge cert-az" aria-hidden="true">AZ-104</span>
+        <div><p class="cert-issuer">Microsoft Certified</p><h3>Azure Administrator Associate</h3><p class="muted small">Identity, governance, storage, compute, networking and monitoring in Azure.</p></div>
+      </article>
+      <article class="cert reveal">
+        <span class="cert-badge cert-az" aria-hidden="true">AZ-900</span>
+        <div><p class="cert-issuer">Microsoft Certified</p><h3>Azure Fundamentals</h3><p class="muted small">Cloud concepts, Azure architecture, services, security and pricing.</p></div>
+      </article>
+      <article class="cert reveal">
+        <span class="cert-badge cert-k8s" aria-hidden="true">KCNA</span>
+        <div><p class="cert-issuer">The Linux Foundation</p><h3>Kubernetes and Cloud Native Associate</h3><p class="muted small">Kubernetes fundamentals, container orchestration and cloud-native architecture.</p></div>
+      </article>
+    </div>
+    <p class="muted small cert-note">Credential verification available on request.</p>
+
+    <div class="edu reveal">
+      <h3 class="edu-title">Education</h3>
+      <ul>
+        <li><strong>Master of Computer Applications (MCA)</strong><span>Jawaharlal Nehru Technological University (JNTU), Hyderabad · 2010</span></li>
+        <li><strong>B.Sc., Computer Science</strong><span>Acharya Nagarjuna University · 2007</span></li>
+      </ul>
+      <p class="muted small">Languages: English, Hindi, Telugu</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-card reveal">
+      <div class="contact-copy">
+        <p class="kicker mono">08 · Contact</p>
+        <h2 id="contact-title">Let's build reliable cloud platforms together.</h2>
+        <p class="lead">Open to Senior Azure DevOps, SRE, Cloud Platform and AKS Platform Engineering roles — remote or Bengaluru. 15-day notice period.</p>
+        <div class="contact-ctas">
+          <a class="btn btn-primary" href="mailto:vamsi.gollapudi85@gmail.com?subject=Opportunity%20for%20Vamsikrishna%20Gollapudi"><svg class="ic"><use href="#i-mail"/></svg>Email me</a>
+          <a class="btn btn-secondary" href="Vamsikrishna_Gollapudi_Resume.pdf" download><svg class="ic"><use href="#i-download"/></svg>Resume (PDF)</a>
+          <a class="btn btn-ghost" href="Vamsikrishna_Gollapudi_Resume.docx" download><svg class="ic"><use href="#i-file"/></svg>Resume (Word)</a>
         </div>
       </div>
-
+      <ul class="contact-list">
+        <li>
+          <span class="cl-ic"><svg class="ic"><use href="#i-mail"/></svg></span>
+          <div><span class="cl-lbl">Email</span><a class="cl-val" href="mailto:vamsi.gollapudi85@gmail.com">vamsi.gollapudi85@gmail.com</a></div>
+          <button class="icon-btn copy-btn" type="button" data-copy="vamsi.gollapudi85@gmail.com" aria-label="Copy email address"><svg class="ic"><use href="#i-copy"/></svg></button>
+        </li>
+        <li>
+          <span class="cl-ic"><svg class="ic"><use href="#i-linkedin"/></svg></span>
+          <div><span class="cl-lbl">LinkedIn</span><a class="cl-val" href="https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447" target="_blank" rel="noopener">vamsikrishna-gollapudi</a></div>
+          <svg class="ic cl-ext" aria-hidden="true"><use href="#i-ext"/></svg>
+        </li>
+        <li>
+          <span class="cl-ic"><svg class="ic"><use href="#i-github"/></svg></span>
+          <div><span class="cl-lbl">GitHub</span><a class="cl-val" href="https://github.com/vamsikrishna85" target="_blank" rel="noopener">github.com/vamsikrishna85</a></div>
+          <svg class="ic cl-ext" aria-hidden="true"><use href="#i-ext"/></svg>
+        </li>
+        <li>
+          <span class="cl-ic"><svg class="ic"><use href="#i-pin"/></svg></span>
+          <div><span class="cl-lbl">Location</span><span class="cl-val">Bengaluru, India · Open to remote</span></div>
+        </li>
+      </ul>
+      <p class="copy-toast" id="copy-toast" role="status" aria-live="polite"></p>
     </div>
   </div>
 </section>
+</main>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="eyebrow reveal">03 · Projects</div>
-    <h2 class="reveal">Things I've built in the open.</h2>
-    <div class="projects">
-      <article class="card proj reveal">
-        <div class="top"><span class="kind">Azure DevOps · Pharma</span></div>
-        <h3>Pharma Platform DevOps</h3>
-        <p>GxP-ready CI/CD for a life-sciences data platform on AKS: every release traceable, scanned and approved.</p>
-        <ul><li>GitHub Actions with OIDC to Azure, so no stored secrets</li><li>Gitleaks, CodeQL, Trivy and SBOM gates before ACR</li><li>Helm deploys dev → qa → prod with approvals and auto-rollback</li><li>Deployment evidence kept for audit (21 CFR Part 11 mapping)</li></ul>
-        <div class="tags"><span>GitHub Actions</span><span>AKS</span><span>Helm</span><span>Trivy</span><span>OIDC</span></div>
-        <a class="repo" href="https://github.com/vamsikrishna85/pharma-platform-devops" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>pharma-platform-devops</a>
-      </article>
-      <article class="card proj reveal">
-        <div class="top"><span class="kind">Azure DevOps · Finance</span></div>
-        <h3>Banking Azure DevOps Pipelines</h3>
-        <p>Audit-ready multi-stage YAML pipelines for banking microservices, built from reusable templates.</p>
-        <ul><li>Reusable build, scan, Terraform and deploy templates</li><li>SonarQube quality gate and dependency vulnerability gate</li><li>CAB approvals and change-ticket checks on UAT and PROD</li><li>Blue/green AKS release with rollback in under 15 minutes</li></ul>
-        <div class="tags"><span>Azure Pipelines</span><span>YAML</span><span>Terraform</span><span>Key Vault</span><span>SonarQube</span></div>
-        <a class="repo" href="https://github.com/vamsikrishna85/banking-azure-devops-pipelines" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>banking-azure-devops-pipelines</a>
-      </article>
-      <article class="card proj reveal">
-        <div class="top"><span class="kind">Azure Infrastructure</span></div>
-        <h3>Azure Landing Zone — Terraform</h3>
-        <p>An enterprise hub-and-spoke foundation with governance, security and monitoring, ready before workloads migrate.</p>
-        <ul><li>Hub with Azure Firewall, Bastion and optional VPN gateway</li><li>Spokes forced through the firewall via UDRs and peering</li><li>Management groups and Azure Policy guardrails</li><li>Nightly drift detection that opens a GitHub issue</li></ul>
-        <div class="tags"><span>Terraform</span><span>Hub-Spoke</span><span>Azure Policy</span><span>Azure Firewall</span><span>Checkov</span></div>
-        <a class="repo" href="https://github.com/vamsikrishna85/azure-landing-zone-terraform" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>azure-landing-zone-terraform</a>
-      </article>
-    </div>
+<footer class="site-footer">
+  <div class="container footer-row">
+    <p>© <span id="year">2026</span> Vamsikrishna Gollapudi · Azure DevOps &amp; Site Reliability Engineering</p>
+    <p class="mono small">Hand-built · no frameworks · <a href="#home">Back to top ↑</a></p>
   </div>
-</section>
+</footer>
 
-<section id="skills">
-  <div class="wrap">
-    <div class="eyebrow reveal">04 · Toolbox</div>
-    <h2 class="reveal">The stack I run in production.</h2>
-    <div class="skills">
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4 12a4 4 0 0 0 1 7.9z"/></svg></div><h4>Microsoft Azure</h4><p>VMs, VMSS, VNet &amp; peering, NSG, App Gateway, VPN Gateway, DNS, Storage, Entra ID, Key Vault, Functions, Logic Apps, App Service, Azure SQL · AWS fundamentals</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="m12 22V12M21 7l-9 5-9-5"/></svg></div><h4>Containers &amp; Orchestration</h4><p>Kubernetes, AKS, Helm, Docker, Azure Container Registry, NGINX Ingress, Horizontal Pod Autoscaler, Cluster Autoscaler</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></div><h4>Infrastructure as Code</h4><p>Terraform (modules, remote state, workspaces, drift detection), Bicep, ARM Templates, Ansible</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a6 6 0 0 0 6 6h3"/></svg></div><h4>CI/CD &amp; Source Control</h4><p>Azure DevOps (Pipelines, Repos, Artifacts, Boards), GitHub Enterprise, GitHub Actions, multi-stage YAML, release management, branching, SonarQube</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h4>Monitoring &amp; SRE</h4><p>Azure Monitor, Log Analytics (KQL), Application Insights, Prometheus, Grafana, Splunk, SLI/SLO, error budgets, runbooks, on-call, RCA, capacity planning</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Security &amp; Governance</h4><p>Azure RBAC, Azure Policy, Management Groups, Defender for Cloud, Managed Identities, Conditional Access, secrets management, image scanning, SAST</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><h4>Migration &amp; DR</h4><p>Azure Migrate, Azure Site Recovery, Azure Backup, lift-and-shift, wave planning, cutover runbooks</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h4>Operating Systems</h4><p>RHEL &amp; Ubuntu (systemd, LVM, cron, SSH, yum/dnf, apt) · Windows Server 2012–2019 (AD, Group Policy, DNS, DHCP)</p></div>
-      <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="m4 17 6-6-6-6M12 19h8"/></svg></div><h4>Scripting &amp; Automation</h4><p>Bash, PowerShell, Python, YAML</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="certs">
-  <div class="wrap">
-    <div class="eyebrow reveal">05 · Credentials</div>
-    <h2 class="reveal">Certified &amp; schooled.</h2>
-    <div class="two">
-      <div class="list reveal">
-        <div class="card"><div class="badge">AZ-104</div><div><h4>Azure Administrator Associate</h4><p>Microsoft Certified</p></div></div>
-        <div class="card"><div class="badge">AZ-900</div><div><h4>Azure Fundamentals</h4><p>Microsoft Certified</p></div></div>
-        <div class="card"><div class="badge">KCNA</div><div><h4>Kubernetes and Cloud Native Associate</h4><p>The Linux Foundation</p></div></div>
-      </div>
-      <div class="list reveal">
-        <div class="card"><div class="badge">MCA</div><div><h4>Master of Computer Applications</h4><p>JNTU Hyderabad · 2010</p></div></div>
-        <div class="card"><div class="badge">B.Sc</div><div><h4>B.Sc. Computer Science</h4><p>Acharya Nagarjuna University · 2007</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="wrap reveal">
-    <div class="eyebrow">06 · Contact</div>
-    <h2>Let's build something reliable.</h2>
-    <p>Open to Azure DevOps, SRE and cloud platform roles — remote or Bengaluru. Available with a 15-day notice period.</p>
-    <div class="cta">
-      <a class="btn primary" href="mailto:vamsi.gollapudi85@gmail.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>vamsi.gollapudi85@gmail.com</a>
-      <a class="btn" href="https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>Connect on LinkedIn</a>
-      <a class="btn" href="https://github.com/vamsikrishna85" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>GitHub</a>
-    </div>
-  </div>
-</section>
-
-<footer><div class="wrap"><span>© <span id="yr"></span> Vamsikrishna Gollapudi</span><span>uptime: 9+ yrs · status: <span style="color:var(--accent)">operational</span></span></div></footer>
-
-<script>
-(function(){
-  var root=document.documentElement,btn=document.getElementById('theme'),ti=document.getElementById('ti');
-  var moon='<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',sun='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
-  function set(t){root.setAttribute('data-theme',t);ti.innerHTML=t==='light'?moon:sun;try{localStorage.setItem('theme',t)}catch(e){}}
-  var saved;try{saved=localStorage.getItem('theme')}catch(e){}
-  set(saved||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));
-  btn.onclick=function(){set(root.getAttribute('data-theme')==='light'?'dark':'light')};
-  document.getElementById('yr').textContent=new Date().getFullYear();
-
-  var roles=['Azure DevOps Engineer','Site Reliability Engineer','Kubernetes (AKS) Operator','Terraform & IaC Builder','Cloud Migration Lead'],ri=0,ci=0,del=false,el=document.getElementById('typed');
-  (function tick(){var w=roles[ri];el.textContent=w.slice(0,ci);
-    if(!del&&ci<w.length){ci++;setTimeout(tick,60)}else if(!del){del=true;setTimeout(tick,1800)}
-    else if(ci>0){ci--;setTimeout(tick,30)}else{del=false;ri=(ri+1)%roles.length;setTimeout(tick,300)}})();
-
-  document.querySelectorAll('.more').forEach(function(b){var j=b.closest('.job'),label=b.textContent;
-    b.onclick=function(){j.classList.toggle('collapsed');b.textContent=j.classList.contains('collapsed')?label:'− show less'}});
-
-  function count(e){var t=parseFloat(e.dataset.count),d=+(e.dataset.dec||0),s=performance.now();
-    (function f(n){var p=Math.min((n-s)/1400,1),v=t*(1-Math.pow(1-p,3));e.textContent=v.toFixed(d);if(p<1)requestAnimationFrame(f)})(s)}
-  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');
-    x.target.querySelectorAll('[data-count]').forEach(count);io.unobserve(x.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
-})();
-</script>
+<dialog class="cs-modal" id="cs-modal" aria-labelledby="cs-modal-title">
+  <div class="cs-modal-inner" id="cs-modal-body"></div>
+</dialog>
 </body>
 </html>
