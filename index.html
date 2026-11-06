@@ -106,6 +106,22 @@ h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;line-height:1.1;margin:1
 .job li b{color:var(--text);font-weight:600}
 .job.collapsed ul li:nth-child(n+5){display:none}
 .more{margin-top:12px;background:none;border:none;color:var(--accent);font-family:var(--mono);font-size:13px;cursor:pointer}
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.proj{padding:26px;display:flex;flex-direction:column}
+.proj .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.proj .kind{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+.proj h3{font-size:20px;letter-spacing:-.01em;margin-bottom:10px;line-height:1.25}
+.proj p{font-size:14.5px;color:var(--muted);margin-bottom:14px}
+.proj ul{list-style:none;display:grid;gap:7px;margin-bottom:18px}
+.proj li{position:relative;padding-left:18px;font-size:13.5px;color:var(--muted)}
+.proj li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+.proj .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;margin-bottom:18px}
+.proj .tags span{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:6px;background:var(--glow);color:var(--accent)}
+.proj .repo{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--text)}
+.proj .repo:hover{color:var(--accent)}
+.proj:hover{transform:translateY(-3px)}
+@media(max-width:960px){.projects{grid-template-columns:1fr}}
 /* skills */
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .skill{padding:24px}
@@ -141,7 +157,7 @@ svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-l
   <div class="wrap">
     <a href="#top" class="logo">~/<b>vamsi</b>.gollapudi</a>
     <div class="links">
-      <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#certs">Certifications</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#certs">Certifications</a><a href="#contact">Contact</a>
       <button class="theme" id="theme" aria-label="Toggle theme">
         <svg id="ti" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
@@ -158,7 +174,7 @@ svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-l
     <div class="cta">
       <a class="btn primary" href="mailto:vamsi.gollapudi85@gmail.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Get in touch</a>
       <a class="btn" href="https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-      <a class="btn" href="#experience"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>View experience</a>
+      <a class="btn" href="#projects"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>View projects</a>
     </div>
     <div class="meta">
       <span><svg viewBox="0 0 24 24"><path d="M12 22s-8-6-8-12a8 8 0 0 1 16 0c0 6-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>Bengaluru, India</span>
@@ -311,9 +327,42 @@ status:      <span class="p">Ready</span> ✔</pre>
   </div>
 </section>
 
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">03 · Projects</div>
+    <h2 class="reveal">Things I've built in the open.</h2>
+    <div class="projects">
+      <article class="card proj reveal">
+        <div class="top"><span class="kind">Azure DevOps · Pharma</span></div>
+        <h3>Pharma Platform DevOps</h3>
+        <p>GxP-ready CI/CD for a life-sciences data platform on AKS: every release traceable, scanned and approved.</p>
+        <ul><li>GitHub Actions with OIDC to Azure, so no stored secrets</li><li>Gitleaks, CodeQL, Trivy and SBOM gates before ACR</li><li>Helm deploys dev → qa → prod with approvals and auto-rollback</li><li>Deployment evidence kept for audit (21 CFR Part 11 mapping)</li></ul>
+        <div class="tags"><span>GitHub Actions</span><span>AKS</span><span>Helm</span><span>Trivy</span><span>OIDC</span></div>
+        <a class="repo" href="https://github.com/vamsikrishna85/pharma-platform-devops" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>pharma-platform-devops</a>
+      </article>
+      <article class="card proj reveal">
+        <div class="top"><span class="kind">Azure DevOps · Finance</span></div>
+        <h3>Banking Azure DevOps Pipelines</h3>
+        <p>Audit-ready multi-stage YAML pipelines for banking microservices, built from reusable templates.</p>
+        <ul><li>Reusable build, scan, Terraform and deploy templates</li><li>SonarQube quality gate and dependency vulnerability gate</li><li>CAB approvals and change-ticket checks on UAT and PROD</li><li>Blue/green AKS release with rollback in under 15 minutes</li></ul>
+        <div class="tags"><span>Azure Pipelines</span><span>YAML</span><span>Terraform</span><span>Key Vault</span><span>SonarQube</span></div>
+        <a class="repo" href="https://github.com/vamsikrishna85/banking-azure-devops-pipelines" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>banking-azure-devops-pipelines</a>
+      </article>
+      <article class="card proj reveal">
+        <div class="top"><span class="kind">Azure Infrastructure</span></div>
+        <h3>Azure Landing Zone — Terraform</h3>
+        <p>An enterprise hub-and-spoke foundation with governance, security and monitoring, ready before workloads migrate.</p>
+        <ul><li>Hub with Azure Firewall, Bastion and optional VPN gateway</li><li>Spokes forced through the firewall via UDRs and peering</li><li>Management groups and Azure Policy guardrails</li><li>Nightly drift detection that opens a GitHub issue</li></ul>
+        <div class="tags"><span>Terraform</span><span>Hub-Spoke</span><span>Azure Policy</span><span>Azure Firewall</span><span>Checkov</span></div>
+        <a class="repo" href="https://github.com/vamsikrishna85/azure-landing-zone-terraform" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>azure-landing-zone-terraform</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
-    <div class="eyebrow reveal">03 · Toolbox</div>
+    <div class="eyebrow reveal">04 · Toolbox</div>
     <h2 class="reveal">The stack I run in production.</h2>
     <div class="skills">
       <div class="card skill reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4 12a4 4 0 0 0 1 7.9z"/></svg></div><h4>Microsoft Azure</h4><p>VMs, VMSS, VNet &amp; peering, NSG, App Gateway, VPN Gateway, DNS, Storage, Entra ID, Key Vault, Functions, Logic Apps, App Service, Azure SQL · AWS fundamentals</p></div>
@@ -331,7 +380,7 @@ status:      <span class="p">Ready</span> ✔</pre>
 
 <section id="certs">
   <div class="wrap">
-    <div class="eyebrow reveal">04 · Credentials</div>
+    <div class="eyebrow reveal">05 · Credentials</div>
     <h2 class="reveal">Certified &amp; schooled.</h2>
     <div class="two">
       <div class="list reveal">
@@ -349,12 +398,13 @@ status:      <span class="p">Ready</span> ✔</pre>
 
 <section class="contact" id="contact">
   <div class="wrap reveal">
-    <div class="eyebrow">05 · Contact</div>
+    <div class="eyebrow">06 · Contact</div>
     <h2>Let's build something reliable.</h2>
     <p>Open to Azure DevOps, SRE and cloud platform roles — remote or Bengaluru. Available with a 15-day notice period.</p>
     <div class="cta">
       <a class="btn primary" href="mailto:vamsi.gollapudi85@gmail.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>vamsi.gollapudi85@gmail.com</a>
       <a class="btn" href="https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>Connect on LinkedIn</a>
+      <a class="btn" href="https://github.com/vamsikrishna85" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.7 12.7 0 0 0-6.6 0C6.9 2.3 5.8 2.6 5.8 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 4.3 9.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V23"/></svg>GitHub</a>
     </div>
   </div>
 </section>
