@@ -1,6 +1,6 @@
 # Vamsikrishna Gollapudi — Portfolio
 
-Personal portfolio for Azure DevOps & Site Reliability Engineering. Static site, no build step, served by GitHub Pages at `/my-profile/`.
+Personal portfolio for Azure DevOps & Site Reliability Engineering. Static site, no build step, served by GitHub Pages at https://vamsikrishna85.github.io/.
 
 | File | Purpose |
 |---|---|
@@ -18,6 +18,6 @@ Personal portfolio for Azure DevOps & Site Reliability Engineering. Static site,
 - **Playbooks:** `PLAYBOOKS` in `labs.js`.
 
 ## Deploy
-Push to `main`. GitHub Pages (Settings → Pages → Deploy from branch `main` / root) publishes within a minute or two. All paths are relative, so the `/my-profile/` sub-path works without configuration.
+Push to `main`. GitHub Pages (Settings → Pages → Deploy from branch `main` / root) publishes within a minute or two. All paths are relative, so the site works at the root or any sub-path without configuration.
 
 The SRE lab and playbooks use simulated sample data generated in the browser. They do not connect to any real service.
