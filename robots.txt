@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://vamsikrishna85.github.io/my-profile/sitemap.xml
+Sitemap: https://vamsikrishna85.github.io/sitemap.xml
