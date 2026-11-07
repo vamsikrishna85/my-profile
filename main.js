@@ -409,23 +409,6 @@
         { id: 'spl', c: 3, r: 1, l: 'Splunk', s: 'SIEM / long-term', k: 'data', d: 'Logs forwarded for security analytics and long-term retention.', w: 'Forward selectively — not every debug log belongs in the SIEM.' }
       ],
       edges: [['wl', 'prom'], ['wl', 'ai'], ['prom', 'graf'], ['ai', 'law'], ['law', 'graf', 1], ['graf', 'mon', 1], ['law', 'mon'], ['prom', 'mon', 1], ['mon', 'ag'], ['ag', 'rb'], ['law', 'spl']]
-    },
-    {
-      id: 'aws', tab: 'AWS EKS (reference)', cols: 5, rows: 2, applied: false,
-      intro: 'A common AWS pattern for containerized services on EKS, shown for comparison with the AKS platform. Educational reference only — not drawn from my client engagements.',
-      nodes: [
-        { id: 'users', c: 0, r: 0, l: 'Users', s: 'internet', k: 'entry', d: 'Clients reaching the service over HTTPS.', w: 'Single, inspected entry path.' },
-        { id: 'r53', c: 1, r: 0, l: 'Route 53', s: 'DNS · health checks', k: 'network', d: 'Public DNS with health-checked records.', w: 'Low TTLs make failover faster.' },
-        { id: 'alb', c: 2, r: 0, l: 'ALB', s: 'LB Controller · WAF', k: 'network', d: 'Application Load Balancer provisioned from Kubernetes Ingress by the AWS Load Balancer Controller.', w: 'Equivalent role to Application Gateway in the Azure pattern.' },
-        { id: 'eks', c: 3, r: 0, l: 'EKS', s: 'managed control plane', k: 'compute', d: 'Managed Kubernetes control plane; workloads run on managed node groups across AZs.', w: 'Same Kubernetes primitives as AKS — Helm, HPA, probes.' },
-        { id: 'ng', c: 4, r: 0, l: 'Node groups', s: 'multi-AZ · autoscaling', k: 'compute', d: 'Managed EC2 node groups spread across Availability Zones, scaled by Cluster Autoscaler or Karpenter.', w: 'Spread across AZs to survive a zone failure.' },
-        { id: 'ecr', c: 3, r: 1, l: 'ECR', s: 'image registry', k: 'data', d: 'Private container registry with image scanning.', w: 'Equivalent role to ACR.' },
-        { id: 'iam', c: 2, r: 1, l: 'IAM', s: 'IRSA / Pod Identity', k: 'security', d: 'Pods assume IAM roles through IRSA or EKS Pod Identity — no static keys.', w: 'Equivalent role to AKS workload identity.' },
-        { id: 'sm', c: 1, r: 1, l: 'Secrets Manager', s: 'secrets · rotation', k: 'security', d: 'Central secret store, mounted via the Secrets Store CSI driver.', w: 'Equivalent role to Key Vault.' },
-        { id: 'rds', c: 4, r: 1, l: 'RDS', s: 'Multi-AZ', k: 'data', d: 'Managed relational database with a synchronous standby in another AZ.', w: 'Equivalent role to Azure SQL with geo-replication.' },
-        { id: 'cw', c: 0, r: 1, l: 'CloudWatch', s: 'metrics · logs', k: 'observe', d: 'Metrics, logs and alarms for the cluster and managed services.', w: 'Equivalent role to Azure Monitor and Log Analytics.' }
-      ],
-      edges: [['users', 'r53'], ['r53', 'alb'], ['alb', 'eks'], ['eks', 'ng'], ['ng', 'ecr', 1], ['ng', 'rds'], ['iam', 'ng', 1], ['sm', 'iam', 1], ['ng', 'cw', 1]]
     }
   ];
 
@@ -496,17 +479,7 @@
     'observe.mon': ['Alert rules deployed via IaC.', 'Duplicate alerts from metric and log rules for the same symptom.', 'One symptom, one alert; route causes to tickets.'],
     'observe.ag': ['Webhook endpoints authenticated.', 'Paging the wrong team after a re-org.', 'Review routing quarterly with the on-call roster.'],
     'observe.rb': ['Runbooks avoid embedding credentials.', 'Runbooks go stale after architecture changes.', 'Update the runbook as a postmortem action.'],
-    'observe.spl': ['Forward over TLS with scoped tokens.', 'Forwarder backlog delays security detections.', 'Monitor forwarder queue depth and lag.'],
-    'aws.users': ['HTTPS only through the load balancer.', 'Client-side DNS caching after failover.', 'Check TTLs and resolver behaviour.'],
-    'aws.r53': ['DNSSEC and restricted change permissions.', 'Health check passes while the app is degraded.', 'Point health checks at a meaningful endpoint.'],
-    'aws.alb': ['AWS WAF attached; TLS policy enforced.', 'Target group unhealthy from wrong health-check path.', 'Target health reasons in the console or CLI.'],
-    'aws.eks': ['Private endpoint access; access entries for RBAC.', 'Version skew between control plane and nodes.', 'Upgrade control plane, then node groups and add-ons.'],
-    'aws.ng': ['IMDSv2 enforced; least-privilege node role.', 'Pod density limited by ENI/IP allocation.', 'Check VPC CNI IP availability and prefix delegation.'],
-    'aws.ecr': ['Scan on push; immutable tags.', 'ImagePullBackOff from missing node-role permission.', 'Verify ECR pull permissions for the node role.'],
-    'aws.iam': ['One role per workload with scoped policies.', 'AccessDenied after trust policy mismatch.', 'Check the service account annotation and the role trust policy.'],
-    'aws.sm': ['Automatic rotation; resource policies.', 'Application caches an old rotated secret.', 'Reload on rotation or use short cache TTLs.'],
-    'aws.rds': ['Encryption, private subnets, IAM auth where supported.', 'Connection exhaustion during scale-out.', 'Use connection pooling (RDS Proxy) and watch connections.'],
-    'aws.cw': ['Log group retention and KMS encryption.', 'Unbounded log retention cost.', 'Set retention per log group.']
+    'observe.spl': ['Forward over TLS with scoped tokens.', 'Forwarder backlog delays security detections.', 'Monitor forwarder queue depth and lag.']
   };
 
   var labTabs = $('#lab-tabs'), labCanvas = $('#lab-canvas'), labDetail = $('#lab-detail'), labLegend = $('#lab-legend');
