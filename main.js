@@ -14,7 +14,7 @@
   function syncThemeBtn() {
     var light = doc.getAttribute('data-theme') === 'light';
     themeBtn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
-    var m = $('meta[name="theme-color"]'); if (m) m.setAttribute('content', light ? '#f6f8fc' : '#070b14');
+    var m = $('meta[name="theme-color"]'); if (m) m.setAttribute('content', light ? '#f6f8fc' : '#0b1220');
   }
   themeBtn.addEventListener('click', function () {
     var next = doc.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -46,8 +46,8 @@
   // Active section indicator
   var navMap = {};
   $$('a[data-nav]').forEach(function (a) { navMap[a.getAttribute('href').slice(1)] = a; });
-  var sectionIds = ['home', 'about', 'expertise', 'experience', 'work', 'lab', 'certifications', 'contact'];
-  var aliases = { achievements: 'expertise', ops: 'lab' };
+  var sectionIds = ['about', 'expertise', 'experience', 'work', 'lab', 'ops', 'certifications', 'contact'];
+  var aliases = { achievements: 'expertise' };
   function updateActive() {
     var y = window.scrollY + (header.offsetHeight + 120), current = 'home';
     $$('main > section[id]').forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
@@ -220,19 +220,43 @@
     }
   ];
 
+  var CASE_EXTRA = {
+    'landing-zone': { diagram: 'azure', color: 'azure',
+      solutions: ['Guardrails assigned at management-group scope instead of per subscription.', 'Every environment rebuilt from versioned Terraform / Bicep modules with remote state.', 'Nightly drift detection surfaces out-of-band changes before they become incidents.'],
+      ops: ['Policy checks in the module pipelines; management groups, custom RBAC roles and a tagging standard.', 'Defender for Cloud recommendations worked as an owned backlog — Secure Score 62% → 85%.', 'Nightly drift detection across 100% of IaC-managed environments.', '99.95% platform availability sustained.'] },
+    'cicd': { diagram: 'cicd', color: 'aws',
+      solutions: ['Repositories moved in batches by team to keep total downtime under 30 minutes.', 'Reusable workflow and YAML templates made the secure path the default path.', 'Branch protection and CODEOWNERS enforced review on every repository.'],
+      ops: ['SAST, container image scanning and secret detection on every build.', 'Secrets resolved from Azure Key Vault at runtime — none stored in pipelines.', '100% pull-request review coverage via branch protection and CODEOWNERS.', '200+ vulnerable builds stopped before production.'] },
+    'aks': { diagram: 'aks', color: 'k8s',
+      solutions: ['Quarterly Kubernetes and node-pool upgrades run as planned, repeatable operations.', 'HPA scales workloads; Cluster Autoscaler adds and removes nodes behind it.', 'Helm-managed releases give a versioned rollback path.'],
+      ops: ['Cluster and workload telemetry in Prometheus, Grafana and Azure Monitor.', 'NGINX Ingress as the single traffic entry point for workloads.', 'Images pulled from Azure Container Registry.', 'Zero customer-facing outages across quarterly upgrades.'] },
+    'sre': { diagram: 'sre', color: 'obs',
+      solutions: ['Alerting rebuilt around SLIs and SLOs so pages reflect user impact.', 'Every recurring failure mode documented as a runbook (40+).', 'Blameless post-incident reviews with tracked corrective actions.'],
+      ops: ['150+ alert rules across Prometheus, Grafana, Azure Monitor and Log Analytics; logs routed to Splunk.', 'SLIs, SLOs and error budgets as the basis for paging.', 'On-call rotation for a 10-member team.', '90% of corrective actions closed within 30 days.'] },
+    'migration': { diagram: null, color: 'azure',
+      solutions: ['Azure Migrate assessment of 180+ servers drove wave composition.', 'Cutover and rollback runbooks prepared for every wave.', 'Validation coordinated with 20+ application owners as part of each cutover.'],
+      ops: ['Azure Backup and Azure Site Recovery for 60 critical workloads.', '4-hour RTO and 15-minute RPO met in semi-annual DR drills.', 'Site-to-site VPN and identity sync for 5,000+ AD accounts.', 'Zero data loss across the Schroders waves.'] },
+    'finops': { diagram: null, color: 'auto',
+      solutions: ['Right-sizing decisions based on utilization analysis, not guesswork.', 'Non-production scale-down automated with Azure Functions and Logic Apps.', 'Tagging standard used to attribute spend to owners.'],
+      ops: ['98% tagging compliance for cost ownership (Nexamatic).', 'Automated certificate-expiry alerts and ticket creation.', 'Production performance preserved — savings from utilization evidence.', '~20 engineer-hours saved every month.'] }
+  };
+  CASES.forEach(function (c) { var x = CASE_EXTRA[c.id] || {}; for (var k in x) c[k] = x[k]; });
+
   var grid = $('#cs-grid'), modal = $('#cs-modal'), modalBody = $('#cs-modal-body'), lastTrigger = null;
   if (grid) {
     grid.innerHTML = CASES.map(function (c, i) {
-      return '<button type="button" class="cs-card reveal" data-cs="' + i + '" aria-haspopup="dialog">' +
+      return '<article class="cs-card reveal" style="--c: var(--' + c.color + ')">' +
         '<span class="cs-kicker">' + esc(c.kicker) + '</span><h3>' + esc(c.title) + '</h3><p>' + esc(c.summary) + '</p>' +
         '<span class="cs-metrics">' + c.metrics.slice(0, 2).map(function (m) { return '<span><b>' + esc(m[0]) + '</b><span>' + esc(m[1]) + '</span></span>'; }).join('') + '</span>' +
         '<span class="chips chips-sm">' + c.tags.slice(0, 4).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</span>' +
-        '<span class="cs-open">Read case study<svg class="ic"><use href="#i-arrow"/></svg></span></button>';
+        '<span class="cs-actions"><button type="button" class="btn btn-sm btn-secondary" data-cs="' + i + '" aria-haspopup="dialog">Case study<svg class="ic"><use href="#i-arrow"/></svg></button>' +
+        '<button type="button" class="btn btn-sm btn-ghost" data-present="' + i + '" aria-haspopup="dialog" aria-label="Present architecture: ' + esc(c.title) + '"><svg class="ic"><use href="#i-present"/></svg>Present</button></span></article>';
     }).join('');
     $$('.cs-card', grid).forEach(function (el) {
       if (reduceMotion || !('IntersectionObserver' in window)) el.classList.add('in'); else if (io) io.observe(el);
-      el.addEventListener('click', function () { openCase(+el.dataset.cs, el); });
     });
+    $$('[data-cs]', grid).forEach(function (b) { b.addEventListener('click', function () { openCase(+b.dataset.cs, b); }); });
+    $$('[data-present]', grid).forEach(function (b) { b.addEventListener('click', function () { if (window.VGPresent) window.VGPresent(+b.dataset.present, b); }); });
   }
   function list(arr) { return '<ul>' + arr.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
   function openCase(i, trigger) {
@@ -248,8 +272,10 @@
       '<div class="csm-two"><div class="csm-sec"><h3>Implementation approach</h3>' + list(c.approach) + '</div>' +
       '<div class="csm-sec"><h3>Measurable impact</h3>' + list(c.impact) + '</div></div>' +
       '<div class="csm-sec"><h3>Operational considerations</h3>' + list(c.considerations) + '</div>' +
-      '<div class="csm-sec"><h3>Technology</h3><div class="chips chips-sm">' + c.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div>';
+      '<div class="csm-sec"><h3>Technology</h3><div class="chips chips-sm">' + c.tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div>' +
+      '<div class="csm-foot"><button type="button" class="btn btn-primary btn-sm" id="csm-present"><svg class="ic"><use href="#i-present"/></svg>Present architecture</button></div>';
     $('.csm-close', modalBody).addEventListener('click', closeCase);
+    $('#csm-present', modalBody).addEventListener('click', function () { var t = lastTrigger; closeCase(); if (window.VGPresent) window.VGPresent(i, t); });
     if (typeof modal.showModal === 'function') modal.showModal(); else modal.setAttribute('open', '');
     modal.scrollTop = 0; $('.csm-close', modalBody).focus();
   }
@@ -264,16 +290,16 @@
      ========================================================= */
   var KINDS = {
     entry: { label: 'Entry / users', color: '#94a3b8' },
-    network: { label: 'Network & edge', color: '#3d8eff' },
-    compute: { label: 'Compute / workloads', color: '#22d3ee' },
-    data: { label: 'Data & artifacts', color: '#a78bfa' },
+    network: { label: 'Network & edge', color: '#3b82f6' },
+    compute: { label: 'Compute / workloads', color: '#06b6d4' },
+    data: { label: 'Data & artifacts', color: '#8b5cf6' },
     security: { label: 'Identity & security', color: '#f59e0b' },
-    observe: { label: 'Observability', color: '#2dd4bf' },
-    process: { label: 'Process step', color: '#3d8eff' }
+    observe: { label: 'Observability', color: '#10b981' },
+    process: { label: 'Process step', color: '#64748b' }
   };
   var DIAGRAMS = [
     {
-      id: 'azure', tab: 'Azure Enterprise', cols: 5, rows: 3,
+      id: 'azure', tab: 'Azure Enterprise', applied: true, cols: 5, rows: 3,
       intro: 'A typical regulated-enterprise web platform: traffic enters through a WAF-protected gateway, workloads run on PaaS, AKS and VM scale sets, and identity, policy and monitoring wrap every layer.',
       nodes: [
         { id: 'users', c: 0, r: 1, l: 'Users', s: 'internet / corp', k: 'entry', d: 'External customers and internal staff reaching the platform over HTTPS.', w: 'All entry is through a single, inspected path — no workload is publicly exposed directly.' },
@@ -295,7 +321,7 @@
       edges: [['users', 'dns'], ['users', 'agw'], ['dns', 'agw', 1], ['entra', 'users', 1], ['agw', 'app'], ['agw', 'aks'], ['agw', 'vmss'], ['nsg', 'agw', 1], ['app', 'sql'], ['aks', 'sql'], ['aks', 'stg'], ['aks', 'kv', 1], ['vmss', 'stg'], ['app', 'kv', 1], ['policy', 'nsg', 1], ['sql', 'mon', 1], ['stg', 'law', 1], ['kv', 'def', 1], ['mon', 'law', 1]]
     },
     {
-      id: 'cicd', tab: 'CI/CD Pipeline', cols: 5, rows: 2,
+      id: 'cicd', tab: 'CI/CD Pipeline', applied: true, cols: 5, rows: 2,
       intro: 'A trunk-based delivery pipeline: every change is reviewed, built once, scanned, stored as an immutable artifact and promoted through gated environments.',
       nodes: [
         { id: 'git', c: 0, r: 0, l: 'GitHub', s: 'commit · branch', k: 'process', d: 'Developer pushes to a short-lived branch in GitHub Enterprise.', w: 'Branch protection and CODEOWNERS make review mandatory, not optional.' },
@@ -312,7 +338,7 @@
       edges: [['git', 'pr'], ['pr', 'build'], ['build', 'test'], ['test', 'scan'], ['scan', 'art'], ['art', 'appr'], ['appr', 'deploy'], ['deploy', 'mon'], ['mon', 'rb', 1]]
     },
     {
-      id: 'aks', tab: 'AKS Platform', cols: 5, rows: 3,
+      id: 'aks', tab: 'AKS Platform', applied: true, cols: 5, rows: 3,
       intro: 'Inside a production AKS cluster: ingress routes to services, deployments manage pods, and autoscaling, secrets and telemetry support every workload.',
       nodes: [
         { id: 'acr', c: 0, r: 0, l: 'ACR', s: 'container images', k: 'data', d: 'Private registry; nodes pull images using the cluster’s managed identity.', w: 'Only scanned images from ACR are allowed to run.' },
@@ -333,7 +359,7 @@
       edges: [['lb', 'ing'], ['ing', 'svcw'], ['ing', 'svca'], ['svcw', 'depw'], ['svca', 'depa'], ['depw', 'podw'], ['depa', 'poda'], ['acr', 'helm', 1], ['helm', 'svcw', 1], ['kv', 'svca', 1], ['hpa', 'depw', 1], ['hpa', 'depa', 1], ['ca', 'podw', 1], ['ca', 'poda', 1], ['prom', 'hpa', 1]]
     },
     {
-      id: 'sre', tab: 'SRE Incident Lifecycle', cols: 4, rows: 2,
+      id: 'sre', tab: 'SRE Incident Lifecycle', applied: true, cols: 4, rows: 2,
       intro: 'How an incident moves from signal to lasting improvement — and how the improvements feed back into SLOs, alerts and runbooks.',
       nodes: [
         { id: 'sig', c: 0, r: 0, l: 'Metrics & Logs', s: 'Prometheus · KQL', k: 'observe', d: 'SLIs measured continuously: availability, latency, error rate, saturation.', w: 'Measure what the user experiences, not just host health.' },
@@ -347,7 +373,137 @@
       ],
       edges: [['sig', 'alert'], ['alert', 'inc'], ['inc', 'inv'], ['inv', 'mit'], ['mit', 'pm'], ['pm', 'imp'], ['imp', 'slo'], ['slo', 'sig', 1]]
     }
+    ,{
+      id: 'terraform', tab: 'Terraform Workflow', cols: 5, rows: 2, applied: true,
+      intro: 'GitOps-style infrastructure delivery: every change is planned, policy-checked and reviewed before apply, state is locked remotely, and a nightly plan catches drift.',
+      nodes: [
+        { id: 'mod', c: 0, r: 0, l: 'Module registry', s: 'versioned modules', k: 'data', d: 'Reusable, versioned Terraform modules (network, AKS, Key Vault, policy) consumed by environment stacks.', w: 'Pin module versions per environment so a change is promoted, not broadcast.' },
+        { id: 'pr', c: 1, r: 0, l: 'Pull Request', s: 'fmt · validate · lint', k: 'process', d: 'terraform fmt, validate and tflint run on every PR to the infrastructure repo.', w: 'Cheap checks first — fail in seconds, not after a 10-minute plan.' },
+        { id: 'plan', c: 2, r: 0, l: 'terraform plan', s: 'saved plan file', k: 'compute', d: 'Plan runs against remote state; the plan file is saved as a pipeline artifact and posted to the PR.', w: 'Apply exactly the plan that was reviewed — never re-plan at apply time.' },
+        { id: 'pol', c: 3, r: 0, l: 'Policy checks', s: 'Checkov · Azure Policy', k: 'security', d: 'Static IaC scanning plus Azure Policy guardrails (allowed regions, required tags, no public IPs).', w: 'Policy as code turns review comments into automated gates.' },
+        { id: 'appr', c: 4, r: 0, l: 'Approval', s: 'plan review', k: 'security', d: 'Environment protection requires a human to approve the plan for production.', w: 'Destroy/replace actions in a plan deserve a second reviewer.' },
+        { id: 'apply', c: 4, r: 1, l: 'terraform apply', s: 'OIDC identity', k: 'compute', d: 'Applies the saved plan using a federated workload identity — no long-lived secrets.', w: 'One pipeline identity per environment limits blast radius.' },
+        { id: 'state', c: 3, r: 1, l: 'Remote state', s: 'Storage · blob lease', k: 'data', d: 'State in an Azure Storage account with blob-lease locking, versioning and soft delete.', w: 'Locking prevents two applies corrupting the same state.' },
+        { id: 'res', c: 2, r: 1, l: 'Azure resources', s: 'per workspace / env', k: 'compute', d: 'Resources created per environment, separated by workspace or state key.', w: 'Separate state per environment keeps dev mistakes out of prod.' },
+        { id: 'drift', c: 1, r: 1, l: 'Drift detection', s: 'nightly plan', k: 'observe', d: 'A scheduled plan with -detailed-exitcode flags any difference between code and reality.', w: 'Drift alerts need an owner, or they become noise.' },
+        { id: 'tick', c: 0, r: 1, l: 'Ticket / alert', s: 'owner queue', k: 'process', d: 'Drift raises a ticket to the owning team to either codify or revert the change.', w: 'Closing the loop is what keeps 100% of environments in code.' }
+      ],
+      edges: [['mod', 'pr', 1], ['pr', 'plan'], ['plan', 'pol'], ['pol', 'appr'], ['appr', 'apply'], ['apply', 'state'], ['apply', 'res', 1], ['state', 'plan', 1], ['res', 'drift', 1], ['drift', 'tick']]
+    },
+    {
+      id: 'observe', tab: 'Observability', cols: 5, rows: 2, applied: true,
+      intro: 'Metrics, logs and traces flow into a small set of tools; SLO-based alerts route to on-call with a runbook attached, and logs are forwarded to the enterprise SIEM.',
+      nodes: [
+        { id: 'wl', c: 0, r: 0, l: 'Workloads', s: 'AKS · App Service', k: 'compute', d: 'Applications and platform components emitting metrics, logs and request telemetry.', w: 'Instrument the golden signals first: latency, traffic, errors, saturation.' },
+        { id: 'prom', c: 1, r: 0, l: 'Prometheus', s: 'metrics scrape', k: 'observe', d: 'Scrapes pod, node and ingress metrics; evaluates recording and alert rules.', w: 'Recording rules keep SLO queries cheap and dashboards fast.' },
+        { id: 'ai', c: 1, r: 1, l: 'App Insights', s: 'requests · traces', k: 'observe', d: 'Application Insights captures requests, dependencies, exceptions and distributed traces.', w: 'Dependency tracking shows whether the fault is yours or downstream.' },
+        { id: 'law', c: 2, r: 1, l: 'Log Analytics', s: 'KQL', k: 'data', d: 'Central workspace for platform and container logs, queried with KQL.', w: 'Retention and table plans drive most of the observability bill.' },
+        { id: 'graf', c: 2, r: 0, l: 'Grafana', s: 'dashboards', k: 'observe', d: 'Service and SLO dashboards across Prometheus and Azure Monitor data sources.', w: 'One dashboard per service, starting with its SLO.' },
+        { id: 'mon', c: 3, r: 0, l: 'Azure Monitor', s: 'alert rules', k: 'observe', d: 'Metric and log alert rules, including error-budget burn-rate alerts.', w: 'Page on symptoms users feel; ticket on causes.' },
+        { id: 'ag', c: 4, r: 0, l: 'Action group', s: 'on-call paging', k: 'process', d: 'Routes alerts to the on-call engineer and incident channel.', w: 'Every page should link straight to a runbook.' },
+        { id: 'rb', c: 4, r: 1, l: 'Runbooks', s: 'documented steps', k: 'process', d: 'Diagnostic and mitigation steps per alert, kept next to the alert definition.', w: 'If a page has no action, it should not page.' },
+        { id: 'spl', c: 3, r: 1, l: 'Splunk', s: 'SIEM / long-term', k: 'data', d: 'Logs forwarded for security analytics and long-term retention.', w: 'Forward selectively — not every debug log belongs in the SIEM.' }
+      ],
+      edges: [['wl', 'prom'], ['wl', 'ai'], ['prom', 'graf'], ['ai', 'law'], ['law', 'graf', 1], ['graf', 'mon', 1], ['law', 'mon'], ['prom', 'mon', 1], ['mon', 'ag'], ['ag', 'rb'], ['law', 'spl']]
+    },
+    {
+      id: 'aws', tab: 'AWS EKS (reference)', cols: 5, rows: 2, applied: false,
+      intro: 'A common AWS pattern for containerized services on EKS, shown for comparison with the AKS platform. Educational reference only — not drawn from my client engagements.',
+      nodes: [
+        { id: 'users', c: 0, r: 0, l: 'Users', s: 'internet', k: 'entry', d: 'Clients reaching the service over HTTPS.', w: 'Single, inspected entry path.' },
+        { id: 'r53', c: 1, r: 0, l: 'Route 53', s: 'DNS · health checks', k: 'network', d: 'Public DNS with health-checked records.', w: 'Low TTLs make failover faster.' },
+        { id: 'alb', c: 2, r: 0, l: 'ALB', s: 'LB Controller · WAF', k: 'network', d: 'Application Load Balancer provisioned from Kubernetes Ingress by the AWS Load Balancer Controller.', w: 'Equivalent role to Application Gateway in the Azure pattern.' },
+        { id: 'eks', c: 3, r: 0, l: 'EKS', s: 'managed control plane', k: 'compute', d: 'Managed Kubernetes control plane; workloads run on managed node groups across AZs.', w: 'Same Kubernetes primitives as AKS — Helm, HPA, probes.' },
+        { id: 'ng', c: 4, r: 0, l: 'Node groups', s: 'multi-AZ · autoscaling', k: 'compute', d: 'Managed EC2 node groups spread across Availability Zones, scaled by Cluster Autoscaler or Karpenter.', w: 'Spread across AZs to survive a zone failure.' },
+        { id: 'ecr', c: 3, r: 1, l: 'ECR', s: 'image registry', k: 'data', d: 'Private container registry with image scanning.', w: 'Equivalent role to ACR.' },
+        { id: 'iam', c: 2, r: 1, l: 'IAM', s: 'IRSA / Pod Identity', k: 'security', d: 'Pods assume IAM roles through IRSA or EKS Pod Identity — no static keys.', w: 'Equivalent role to AKS workload identity.' },
+        { id: 'sm', c: 1, r: 1, l: 'Secrets Manager', s: 'secrets · rotation', k: 'security', d: 'Central secret store, mounted via the Secrets Store CSI driver.', w: 'Equivalent role to Key Vault.' },
+        { id: 'rds', c: 4, r: 1, l: 'RDS', s: 'Multi-AZ', k: 'data', d: 'Managed relational database with a synchronous standby in another AZ.', w: 'Equivalent role to Azure SQL with geo-replication.' },
+        { id: 'cw', c: 0, r: 1, l: 'CloudWatch', s: 'metrics · logs', k: 'observe', d: 'Metrics, logs and alarms for the cluster and managed services.', w: 'Equivalent role to Azure Monitor and Log Analytics.' }
+      ],
+      edges: [['users', 'r53'], ['r53', 'alb'], ['alb', 'eks'], ['eks', 'ng'], ['ng', 'ecr', 1], ['ng', 'rds'], ['iam', 'ng', 1], ['sm', 'iam', 1], ['ng', 'cw', 1]]
+    }
   ];
+
+  /* Security / common issue / troubleshooting notes per component (diagramId.nodeId). */
+  var NOTES = {
+    'azure.users': ['Only HTTPS through the gateway; no direct public endpoints on workloads.', 'Client errors that look like outages are often DNS caching or certificate issues.', 'Reproduce with curl -v against the public hostname and compare with a private-endpoint path.'],
+    'azure.entra': ['MFA and Conditional Access for humans; managed identities for workloads.', 'Expired app-registration secrets and over-scoped role assignments.', 'Check sign-in logs and the role assignments at each scope (az role assignment list).'],
+    'azure.policy': ['Deny effects for public IPs and unapproved regions; audit for tags.', 'A new Deny policy silently blocks a pipeline deployment.', 'Read the policy violation in the deployment error; test with -WhatIf before assigning.'],
+    'azure.dns': ['Private DNS zones linked only to the VNets that need them.', 'Private endpoint resolves to a public IP because the zone is not linked.', 'nslookup from inside the VNet; verify zone links and the A record.'],
+    'azure.agw': ['WAF in Prevention mode with tuned exclusions; TLS 1.2+ only.', 'Backend marked unhealthy because the probe path or host header is wrong.', 'Check Backend health blade and WAF logs in Log Analytics.'],
+    'azure.nsg': ['Least-privilege NSG rules; hub firewall for egress inspection.', 'Asymmetric routing or a missing peering route after a change.', 'Network Watcher IP flow verify and effective routes on the NIC.'],
+    'azure.app': ['Managed identity to reach Key Vault and SQL; access restrictions on SCM site.', 'Slot swap brings cold instances and a latency spike.', 'Warm up the staging slot; check App Insights for the swap window.'],
+    'azure.aks': ['Private API server or authorized IP ranges; workload identity; Azure Policy for AKS.', 'Node pool reaches pod or IP limits during scale-out.', 'kubectl describe pod for scheduling events; check subnet IP availability.'],
+    'azure.vmss': ['Hardened images, no public IPs, patching via update management.', 'Instances drift from the model after manual changes.', 'Compare instance view to the model; reimage rather than hand-fix.'],
+    'azure.sql': ['Private endpoint only, Entra authentication, TDE and auditing on.', 'DTU/vCore saturation or long-running blocking queries.', 'Query Performance Insight and sys.dm_exec_requests for blockers.'],
+    'azure.stg': ['Disable shared-key access where possible; private endpoints; soft delete.', 'Throttling (503) from hot partitions or account limits.', 'Storage metrics for throttling and latency; spread load across prefixes.'],
+    'azure.kv': ['RBAC model, purge protection, private endpoint, no secret values in logs.', 'Expired certificates or access denied after a role change.', 'Key Vault diagnostic logs for the failing identity and operation.'],
+    'azure.mon': ['Action groups restricted to on-call channels; alert definitions in code.', 'Alert storms during a single upstream failure.', 'Group alerts by service; suppress dependent alerts during a known incident.'],
+    'azure.law': ['Workspace RBAC by resource; retention aligned to compliance.', 'Ingestion cost spikes from verbose container logs.', 'Usage table by DataType to find the noisy source.'],
+    'azure.def': ['Defender plans per workload type; findings assigned to owners.', 'Recommendations pile up without ownership and Secure Score stalls.', 'Export recommendations to a backlog with owners and due dates.'],
+    'cicd.git': ['Signed commits optional; branch protection and secret scanning on push.', 'Long-lived branches cause painful merges.', 'Keep branches short-lived; rebase often.'],
+    'cicd.pr': ['CODEOWNERS on sensitive paths; required status checks.', 'Flaky checks block merges and erode trust in the gate.', 'Quarantine flaky tests and track them as defects.'],
+    'cicd.build': ['Pinned action versions; least-privilege GITHUB_TOKEN permissions.', 'Cache misses make builds slow and inconsistent.', 'Inspect cache keys; make builds reproducible with lockfiles.'],
+    'cicd.test': ['Tests never use production credentials or data.', 'Quality gate fails on new code coverage after a refactor.', 'Read the SonarQube new-code report; fix or justify in the PR.'],
+    'cicd.scan': ['Fail on high/critical findings with an agreed exception process.', 'False positives slow teams and invite bypasses.', 'Triage findings with suppression files reviewed like code.'],
+    'cicd.art': ['Immutable tags; pull access via managed identity only.', 'Deploying a mutable latest tag makes rollback ambiguous.', 'Deploy by digest or semantic version; never latest.'],
+    'cicd.appr': ['Approvers separated from authors for production.', 'Approvals become rubber stamps when the diff is unreadable.', 'Show the plan or release notes in the approval request.'],
+    'cicd.deploy': ['OIDC federation — no stored cloud secrets in the pipeline.', 'Helm upgrade times out waiting for unready pods.', 'helm status, kubectl rollout status and pod events for the failing release.'],
+    'cicd.mon': ['Deployment markers annotated on dashboards.', 'Regression noticed by users before the pipeline.', 'Automate post-deploy checks against SLO metrics.'],
+    'cicd.rb': ['Rollback uses the same approved pipeline path.', 'Database migrations that cannot roll back.', 'Use expand-and-contract migrations so the app can roll back safely.'],
+    'aks.acr': ['Pull via kubelet managed identity; admin user disabled.', 'ImagePullBackOff after a registry permission change.', 'kubectl describe pod; az aks check-acr to test the attachment.'],
+    'aks.helm': ['Values files without secrets; chart versions pinned.', 'Failed release left in pending-upgrade state.', 'helm history, then helm rollback to the last deployed revision.'],
+    'aks.lb': ['Internal load balancer where public exposure is not needed.', 'SNAT port exhaustion under heavy outbound traffic.', 'Check SNAT metrics; use NAT Gateway for egress.'],
+    'aks.ing': ['TLS via cert-manager or Key Vault; rate limits on public routes.', '502/504 from misconfigured upstream timeouts.', 'Ingress controller logs and upstream response time metrics.'],
+    'aks.kv': ['Secrets Store CSI with workload identity; rotation enabled.', 'Pod stuck in ContainerCreating because the secret mount fails.', 'Pod events and the CSI driver logs for the access error.'],
+    'aks.svcw': ['NetworkPolicy restricts which pods can call the service.', 'Service selector does not match pod labels — no endpoints.', 'kubectl get endpoints for the service.'],
+    'aks.svca': ['NetworkPolicy restricts callers to the web tier.', 'Traffic sent to pods that are not yet ready.', 'Check readiness probe configuration and endpoint list.'],
+    'aks.prom': ['Scrape endpoints not exposed outside the cluster.', 'High-cardinality labels exhaust memory.', 'Inspect top series by label; drop unbounded labels.'],
+    'aks.depw': ['Non-root containers, read-only root filesystem where possible.', 'Rollout stalls on maxUnavailable with a PodDisruptionBudget.', 'kubectl rollout status and describe replicaset.'],
+    'aks.depa': ['Resource limits prevent noisy neighbours.', 'OOMKilled after a memory regression.', 'kubectl describe pod for Last State; compare usage with limits.'],
+    'aks.hpa': ['Scaling bounds set so a bug cannot scale costs unbounded.', 'HPA shows unknown metrics because metrics-server is unhealthy.', 'kubectl describe hpa for metric errors.'],
+    'aks.podw': ['Pod security standards enforced per namespace.', 'CrashLoopBackOff from bad config or a missing dependency.', 'kubectl logs --previous for the crashed container.'],
+    'aks.poda': ['Probes and limits on every container.', 'Liveness probe too aggressive causes restart loops.', 'Tune initialDelaySeconds; use startup probes for slow starts.'],
+    'aks.ca': ['Node pools with system/user separation.', 'Pods pending because a node pool hit its max count.', 'Cluster Autoscaler status and events on pending pods.'],
+    'sre.sig': ['Telemetry free of personal data and secrets.', 'Measuring host CPU instead of user experience.', 'Define SLIs from the request path first.'],
+    'sre.alert': ['Alert rules versioned and reviewed.', 'Threshold alerts flap and create noise.', 'Use multi-window burn-rate alerts with a for-duration.'],
+    'sre.inc': ['Incident channel access limited; status page reviewed before posting.', 'No clear incident commander — parallel, conflicting actions.', 'Assign roles in the first five minutes.'],
+    'sre.inv': ['Read-only access for diagnostics where possible.', 'Rabbit-holing on root cause while users are still impacted.', 'Time-box investigation; mitigate first.'],
+    'sre.mit': ['Emergency changes still logged and reviewed afterwards.', 'Rollback blocked by an irreversible change.', 'Feature flags and reversible migrations keep options open.'],
+    'sre.pm': ['Postmortems shared without blame or personal data.', 'Action items without owners never close.', 'Assign owner and due date to every action.'],
+    'sre.imp': ['Guardrails added as code, not wiki pages.', 'Same incident recurs months later.', 'Track action closure rate as a team metric.'],
+    'sre.slo': ['SLO changes agreed with service owners.', 'SLOs set to 100% leave no room for change.', 'Pick targets users notice; review quarterly.'],
+    'terraform.mod': ['Modules reviewed like application code; no secrets in defaults.', 'Breaking change in a module version lands everywhere at once.', 'Semantic versioning and per-environment version pins.'],
+    'terraform.pr': ['Pipeline cannot read production state on untrusted forks.', 'Formatting and provider-version mismatches across engineers.', 'Pin required_providers and run fmt in pre-commit.'],
+    'terraform.plan': ['Plan output can contain sensitive values — restrict artifact access.', 'Unexpected destroy/replace from a renamed resource.', 'Use moved blocks; read the plan summary before approval.'],
+    'terraform.pol': ['Policies enforce encryption, private networking and tags.', 'Policy exception granted permanently instead of time-boxed.', 'Record exceptions in code with an expiry.'],
+    'terraform.appr': ['Separate approvers for production.', 'Approving a plan that is stale by the time it applies.', 'Apply the saved plan; re-plan if state changed.'],
+    'terraform.apply': ['Federated identity scoped to one subscription/environment.', 'Apply fails midway, leaving partial infrastructure.', 'Re-run plan to see remaining changes; fix and re-apply.'],
+    'terraform.state': ['State encrypted at rest; access restricted; versioning on.', 'Stale lock after a cancelled pipeline.', 'Confirm no run is active, then terraform force-unlock with the lock ID.'],
+    'terraform.res': ['Resource locks on critical shared resources.', 'Manual portal changes create drift.', 'Import or revert the change; restrict write access to the pipeline identity.'],
+    'terraform.drift': ['Drift job uses read-only credentials.', 'Drift reports ignored until the next change explodes.', 'Route to an owner queue with an SLA.'],
+    'terraform.tick': ['Tickets link to the plan output, not raw secrets.', 'Ownership unclear for shared resources.', 'Tag resources with owner and service.'],
+    'observe.wl': ['Never log secrets or tokens.', 'Missing correlation IDs make cross-service debugging slow.', 'Propagate trace context through every hop.'],
+    'observe.prom': ['Metrics endpoints internal only.', 'Cardinality explosion from user IDs in labels.', 'Drop or relabel unbounded labels.'],
+    'observe.ai': ['Sampling and data masking for sensitive fields.', 'Sampling hides rare errors.', 'Use adaptive sampling with exceptions always kept.'],
+    'observe.law': ['Table-level RBAC for sensitive logs.', 'Ingestion cost spike after a debug flag is left on.', 'Usage | summarize by DataType; set daily cap alerts.'],
+    'observe.graf': ['SSO with role mapping; no shared admin accounts.', 'Dashboards drift and show stale queries.', 'Manage dashboards as code.'],
+    'observe.mon': ['Alert rules deployed via IaC.', 'Duplicate alerts from metric and log rules for the same symptom.', 'One symptom, one alert; route causes to tickets.'],
+    'observe.ag': ['Webhook endpoints authenticated.', 'Paging the wrong team after a re-org.', 'Review routing quarterly with the on-call roster.'],
+    'observe.rb': ['Runbooks avoid embedding credentials.', 'Runbooks go stale after architecture changes.', 'Update the runbook as a postmortem action.'],
+    'observe.spl': ['Forward over TLS with scoped tokens.', 'Forwarder backlog delays security detections.', 'Monitor forwarder queue depth and lag.'],
+    'aws.users': ['HTTPS only through the load balancer.', 'Client-side DNS caching after failover.', 'Check TTLs and resolver behaviour.'],
+    'aws.r53': ['DNSSEC and restricted change permissions.', 'Health check passes while the app is degraded.', 'Point health checks at a meaningful endpoint.'],
+    'aws.alb': ['AWS WAF attached; TLS policy enforced.', 'Target group unhealthy from wrong health-check path.', 'Target health reasons in the console or CLI.'],
+    'aws.eks': ['Private endpoint access; access entries for RBAC.', 'Version skew between control plane and nodes.', 'Upgrade control plane, then node groups and add-ons.'],
+    'aws.ng': ['IMDSv2 enforced; least-privilege node role.', 'Pod density limited by ENI/IP allocation.', 'Check VPC CNI IP availability and prefix delegation.'],
+    'aws.ecr': ['Scan on push; immutable tags.', 'ImagePullBackOff from missing node-role permission.', 'Verify ECR pull permissions for the node role.'],
+    'aws.iam': ['One role per workload with scoped policies.', 'AccessDenied after trust policy mismatch.', 'Check the service account annotation and the role trust policy.'],
+    'aws.sm': ['Automatic rotation; resource policies.', 'Application caches an old rotated secret.', 'Reload on rotation or use short cache TTLs.'],
+    'aws.rds': ['Encryption, private subnets, IAM auth where supported.', 'Connection exhaustion during scale-out.', 'Use connection pooling (RDS Proxy) and watch connections.'],
+    'aws.cw': ['Log group retention and KMS encryption.', 'Unbounded log retention cost.', 'Set retention per log group.']
+  };
 
   var labTabs = $('#lab-tabs'), labCanvas = $('#lab-canvas'), labDetail = $('#lab-detail'), labLegend = $('#lab-legend');
   var labSel = null, currentDiagram = 0, narrowMQ = window.matchMedia('(max-width: 640px)');
@@ -377,20 +533,21 @@
     selectTab(0);
   }
 
-  function renderDiagram() {
-    var d = DIAGRAMS[currentDiagram], narrow = narrowMQ.matches;
+  /* Builds a diagram SVG. Used by the lab (interactive) and by presentation mode (static). */
+  function buildDiagram(d, narrow, opts) {
+    opts = opts || {};
     var nw = narrow ? 104 : 136, nh = narrow ? 50 : 54, cw = narrow ? 120 : 172, rh = narrow ? 84 : 104, pad = 12;
     var C = narrow ? d.rows : d.cols, R = narrow ? d.cols : d.rows;
     var W = C * cw - (cw - nw) + pad * 2, H = R * rh - (rh - nh) + pad * 2;
-    var pos = {};
+    var pos = {}, uid = d.id + (opts.suffix || '');
     d.nodes.forEach(function (n) {
       var c = narrow ? n.r : n.c, r = narrow ? n.c : n.r;
       pos[n.id] = { x: pad + c * cw, y: pad + r * rh, n: n };
     });
-    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'group', 'aria-label': d.tab + ' diagram. Use Tab to move between components and Enter to select.' });
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: opts.static ? 'img' : 'group', 'aria-label': d.tab + ' diagram' + (opts.static ? '' : '. Use Tab to move between components and Enter to select.') });
     var defs = svgEl('defs', {});
     ['', '-hl'].forEach(function (s) {
-      var m = svgEl('marker', { id: 'arr' + s + '-' + d.id, viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '7', markerHeight: '7', orient: 'auto-start-reverse' });
+      var m = svgEl('marker', { id: 'arr' + s + '-' + uid, viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '7', markerHeight: '7', orient: 'auto-start-reverse' });
       m.appendChild(svgEl('path', { d: 'M0 0 L10 5 L0 10 z', 'class': s ? 'dg-arrow-hl' : 'dg-arrow' })); defs.appendChild(m);
     });
     svg.appendChild(defs);
@@ -399,52 +556,71 @@
     var edgeEls = [];
     d.edges.forEach(function (e) {
       var a = pos[e[0]], b = pos[e[1]]; if (!a || !b) return;
-      var p = edgePath(a, b, nw, nh);
-      var path = svgEl('path', { d: p, 'class': 'dg-edge' + (e[2] ? ' aux' : ''), 'marker-end': 'url(#arr-' + d.id + ')' });
+      var path = svgEl('path', { d: edgePath(a, b, nw, nh), 'class': 'dg-edge' + (e[2] ? ' aux' : ''), 'marker-end': 'url(#arr-' + uid + ')' });
       path.__from = e[0]; path.__to = e[1]; gE.appendChild(path); edgeEls.push(path);
     });
     var nodeEls = {};
     d.nodes.forEach(function (n) {
       var p = pos[n.id], kind = KINDS[n.k];
-      var g = svgEl('g', { 'class': 'dg-node', transform: 'translate(' + p.x + ',' + p.y + ')', tabindex: '0', role: 'button', 'aria-label': n.l + ' — ' + n.s + '. ' + n.d });
+      var attrs = { 'class': 'dg-node', transform: 'translate(' + p.x + ',' + p.y + ')' };
+      if (!opts.static) { attrs.tabindex = '0'; attrs.role = 'button'; attrs['aria-label'] = n.l + ' — ' + n.s + '. ' + n.d; }
+      var g = svgEl('g', attrs);
       g.appendChild(svgEl('rect', { 'class': 'box', width: nw, height: nh, rx: 10 }));
       g.appendChild(svgEl('rect', { 'class': 'bar', x: 0, y: 10, width: 3, height: nh - 20, rx: 1.5, fill: kind.color }));
       var t1 = svgEl('text', { 'class': 'l1', x: 12, y: nh / 2 - 3 }); t1.textContent = n.l;
       var t2 = svgEl('text', { 'class': 'l2', x: 12, y: nh / 2 + 13 }); t2.textContent = n.s;
       if (narrow) { t1.setAttribute('style', 'font-size:11.5px'); t2.setAttribute('style', 'font-size:9px'); }
-      var tt = svgEl('title', {}); tt.textContent = n.l + ': ' + n.d;
-      g.appendChild(tt); g.appendChild(t1); g.appendChild(t2);
-      g.addEventListener('click', function () { selectNode(n.id); });
-      g.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); selectNode(n.id); } });
+      if (!opts.static) { var tt = svgEl('title', {}); tt.textContent = n.l + ': ' + n.d; g.appendChild(tt); }
+      g.appendChild(t1); g.appendChild(t2);
       gN.appendChild(g); nodeEls[n.id] = g;
     });
-    labCanvas.innerHTML = ''; labCanvas.appendChild(svg);
+    return { svg: svg, pos: pos, nodeEls: nodeEls, edgeEls: edgeEls, uid: uid };
+  }
+  function findDiagram(id) { for (var i = 0; i < DIAGRAMS.length; i++) if (DIAGRAMS[i].id === id) return DIAGRAMS[i]; return null; }
+
+  function renderDiagram() {
+    var d = DIAGRAMS[currentDiagram], narrow = narrowMQ.matches;
+    var built = buildDiagram(d, narrow), pos = built.pos, nodeEls = built.nodeEls, edgeEls = built.edgeEls, uid = built.uid;
+    Object.keys(nodeEls).forEach(function (id) {
+      var g = nodeEls[id];
+      g.addEventListener('click', function () { selectNode(id); });
+      g.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); selectNode(id); } });
+    });
+    labCanvas.innerHTML = ''; labCanvas.appendChild(built.svg);
+    var disc = $('#lab-disclaimer');
+    if (disc) {
+      disc.textContent = d.applied ? 'Illustrative pattern from my client work — not a connected production environment.' : 'Educational reference only — not from my client engagements.';
+      disc.classList.toggle('ref', !d.applied);
+    }
 
     function selectNode(id) {
       labSel = id; var n = pos[id].n, connected = {}; connected[id] = 1;
       edgeEls.forEach(function (p) {
         var on = p.__from === id || p.__to === id;
         p.classList.toggle('hl', on); p.classList.toggle('dim', !on);
-        p.setAttribute('marker-end', 'url(#arr' + (on ? '-hl' : '') + '-' + d.id + ')');
+        p.setAttribute('marker-end', 'url(#arr' + (on ? '-hl' : '') + '-' + uid + ')');
         if (on) { connected[p.__from] = 1; connected[p.__to] = 1; }
       });
       Object.keys(nodeEls).forEach(function (k) { nodeEls[k].classList.toggle('sel', k === id); nodeEls[k].classList.toggle('dim', !connected[k]); });
       var links = edgeEls.filter(function (p) { return p.__from === id || p.__to === id; }).map(function (p) {
-        var other = pos[p.__from === id ? p.__to : p.__from].n; return other.l + (other.s ? ' (' + other.s + ')' : '');
+        var out = p.__from === id, other = pos[out ? p.__to : p.__from].n;
+        return (out ? '→ ' : '← ') + other.l + (other.s ? ' (' + other.s + ')' : '');
       });
-      var kind = KINDS[n.k];
+      var kind = KINDS[n.k], note = NOTES[d.id + '.' + id];
+      var sec = function (label, body) { return '<p class="ld-label">' + label + '</p><p>' + esc(body) + '</p>'; };
       labDetail.innerHTML = '<span class="ld-kind"><i style="background:' + kind.color + '"></i>' + esc(kind.label) + '</span>' +
-        '<h3>' + esc(n.l) + ' <span class="muted mono small">' + esc(n.s) + '</span></h3><p>' + esc(n.d) + '</p>' +
-        '<p class="ld-label">Operational note</p><p>' + esc(n.w) + '</p>' +
-        (links.length ? '<p class="ld-label">Connected to</p><p class="mono small">' + links.map(esc).join('<br>') + '</p>' : '') +
+        '<h3>' + esc(n.l) + ' <span class="muted mono small">' + esc(n.s) + '</span></h3>' +
+        sec('What it does', n.d) + sec('Why it is used', n.w) +
+        (links.length ? '<p class="ld-label">Integrates with</p><p class="mono small">' + links.map(esc).join('<br>') + '</p>' : '') +
+        (note ? '<details class="ld-more" open><summary>Operations notes</summary>' + sec('Security', note[0]) + sec('Common production issue', note[1]) + sec('Troubleshooting', note[2]) + '</details>' : '') +
         '<button type="button" class="btn btn-sm btn-ghost" id="ld-clear" style="margin-top:8px">Clear selection</button>';
       $('#ld-clear').addEventListener('click', function () { clearSel(); nodeEls[id].focus(); });
     }
     function clearSel() {
       labSel = null;
-      edgeEls.forEach(function (p) { p.classList.remove('hl', 'dim'); p.setAttribute('marker-end', 'url(#arr-' + d.id + ')'); });
+      edgeEls.forEach(function (p) { p.classList.remove('hl', 'dim'); p.setAttribute('marker-end', 'url(#arr-' + uid + ')'); });
       Object.keys(nodeEls).forEach(function (k) { nodeEls[k].classList.remove('sel', 'dim'); });
-      labDetail.innerHTML = '<span class="ld-kind">' + esc(d.tab) + '</span><h3>Overview</h3><p>' + esc(d.intro) + '</p><p class="ld-hint">Select a component to see its role, an operational note and its connections.</p>';
+      labDetail.innerHTML = '<span class="ld-kind">' + esc(d.tab) + (d.applied ? '' : ' · reference') + '</span><h3>Overview</h3><p>' + esc(d.intro) + '</p><p class="ld-hint">Select a component to see what it does, why it is used, how it connects, and its security and troubleshooting notes.</p>';
     }
     var keep = labSel; clearSel(); if (keep && pos[keep]) selectNode(keep);
     var used = {}; d.nodes.forEach(function (n) { used[n.k] = 1; });
@@ -464,6 +640,8 @@
     var k2 = Math.max(16, Math.abs(e[1] - s[1]) / 2);
     return 'M' + s[0] + ' ' + s[1] + ' C' + s[0] + ' ' + (s[1] + sy * k2) + ' ' + e[0] + ' ' + (e[1] - sy * k2) + ' ' + e[0] + ' ' + e[1];
   }
+
+  window.VG = { CASES: CASES, DIAGRAMS: DIAGRAMS, buildDiagram: buildDiagram, findDiagram: findDiagram, esc: esc, svgEl: svgEl, reduceMotion: reduceMotion };
 
   /* =========================================================
      SRE OPERATIONS LAB — SIMULATED DATA ONLY (seeded PRNG)

@@ -77,7 +77,8 @@
       "For Kubernetes and containers: AKS, Docker, Helm, NGINX Ingress, and autoscaling.",
       "For SRE and observability: Prometheus, Grafana, Application Insights, Log Analytics with KQL, and Splunk.",
       "For security and governance: Azure RBAC, Defender for Cloud, managed identities, Conditional Access, and pipeline security scanning.",
-      "And for automation: Linux, Windows Server, Active Directory, Bash, PowerShell, and Python."
+      "And for automation: Linux, Windows Server, Active Directory, Bash, PowerShell, and Python.",
+      "He also has foundational knowledge of Azure AI services and machine-learning concepts."
     ]},
     { key: 'projects', label: 'Projects', target: '#work', lines: [
       "Next, his selected engineering work, presented as six case studies.",
@@ -88,7 +89,7 @@
       "Five: Azure Cloud Migration, rehosting 160+ servers in planned waves with zero data loss and 98% first-attempt cutover success.",
       "Six: Azure Cost Optimization, lowering monthly Azure spend by ~18% and non-production compute cost by 22%.",
       "He also publishes open-source reference implementations on GitHub, including a Terraform landing zone, a GitHub Actions to AKS delivery pipeline, and reusable Azure DevOps pipeline templates.",
-      "You can explore his interactive Architecture Lab, and an SRE Operations Lab that simulates a production incident end to end."
+      "Each project has a Present button for an interview-style walkthrough, and the SRE Lab simulates a production incident and common failure playbooks."
     ]},
     { key: 'impact', label: 'Achievements', target: { heading: 'Outcomes, measured' }, lines: [
       "Here are some of his measured achievements.",
