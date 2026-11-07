@@ -72,6 +72,7 @@
 </svg>
 
 <header class="site-header" id="top">
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress"></span></div>
   <nav class="nav container" aria-label="Primary">
     <a class="brand" href="#home" aria-label="Vamsikrishna Gollapudi — home">
       <span class="brand-mark" aria-hidden="true">VG</span>
@@ -171,6 +172,16 @@
       <li class="metric"><span class="metric-val" data-count="35" data-prefix="~" data-suffix="%">~35%</span><span class="metric-lbl">MTTR reduction</span></li>
       <li class="metric"><span class="metric-val" data-count="160" data-suffix="+">160+</span><span class="metric-lbl">Servers migrated to Azure</span></li>
     </ul>
+    <div class="trust" aria-label="Client delivery">
+      <span class="trust-lbl mono">Delivered for</span>
+      <ul class="trust-list">
+        <li><b>IQVIA</b><span>Life sciences</span></li>
+        <li><b>CIBC</b><span>Banking</span></li>
+        <li><b>Schroders</b><span>Asset management</span></li>
+        <li><b>Bayer</b><span>Life sciences</span></li>
+        <li><b>Adamas</b><span>Life sciences</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -210,7 +221,15 @@
       </li>
     </ol>
 
-    <p class="about-note reveal">Currently a Site Reliability Engineer at <strong>Nexamatic</strong>, running a multi-subscription Azure landing zone and production AKS platform for life-sciences clients. Known for clear documentation, blameless incident reviews and mentoring engineers moving from operations into cloud engineering.</p>
+    <div class="about-row">
+      <p class="about-note reveal">Currently a Site Reliability Engineer at <strong>Nexamatic</strong>, running a multi-subscription Azure landing zone and production AKS platform for life-sciences clients. Known for clear documentation, blameless incident reviews and mentoring engineers moving from operations into cloud engineering.</p>
+      <dl class="now-card reveal" aria-label="At a glance">
+        <div><dt>Role</dt><dd>Site Reliability Engineer · Nexamatic</dd></div>
+        <div><dt>Focus</dt><dd>AKS reliability, SLOs, IaC governance</dd></div>
+        <div><dt>Looking for</dt><dd>Senior DevOps / SRE / Platform roles</dd></div>
+        <div><dt>Availability</dt><dd>15-day notice · Remote or Bengaluru</dd></div>
+      </dl>
+    </div>
   </div>
 </section>
 
@@ -327,7 +346,8 @@
         <div class="tl-marker" aria-hidden="true"></div>
         <article class="tl-card">
           <header class="tl-head">
-            <div>
+            <span class="tl-logo mono" aria-hidden="true">NX</span>
+            <div class="tl-who">
               <h3>Site Reliability Engineer</h3>
               <p class="tl-co"><strong>Nexamatic</strong> · Bengaluru, India</p>
               <p class="tl-client">Clients: IQVIA, Adamas · Life Sciences</p>
@@ -361,7 +381,8 @@
         <div class="tl-marker" aria-hidden="true"></div>
         <article class="tl-card">
           <header class="tl-head">
-            <div>
+            <span class="tl-logo mono" aria-hidden="true">KS</span>
+            <div class="tl-who">
               <h3>Azure DevOps Engineer</h3>
               <p class="tl-co"><strong>Kumaran Systems</strong> · Bengaluru, India</p>
               <p class="tl-client">Client: CIBC · Banking</p>
@@ -394,7 +415,8 @@
         <div class="tl-marker" aria-hidden="true"></div>
         <article class="tl-card">
           <header class="tl-head">
-            <div>
+            <span class="tl-logo mono" aria-hidden="true">UST</span>
+            <div class="tl-who">
               <h3>Cloud Infrastructure Engineer</h3>
               <p class="tl-co"><strong>UST Global</strong> · Hyderabad, India</p>
               <p class="tl-client">Client: Schroders · Asset Management</p>
@@ -425,7 +447,8 @@
         <div class="tl-marker" aria-hidden="true"></div>
         <article class="tl-card">
           <header class="tl-head">
-            <div>
+            <span class="tl-logo mono" aria-hidden="true">CTS</span>
+            <div class="tl-who">
               <h3>Tech Lead</h3>
               <p class="tl-co"><strong>Cognizant</strong> · India</p>
               <p class="tl-client">Client: Bayer · Life Sciences</p>
@@ -453,7 +476,8 @@
         <div class="tl-marker" aria-hidden="true"></div>
         <article class="tl-card">
           <header class="tl-head">
-            <div>
+            <span class="tl-logo mono" aria-hidden="true">AE</span>
+            <div class="tl-who">
               <h3>System Administrator (Linux &amp; Windows)</h3>
               <p class="tl-co"><strong>Anewa Engineering Pvt. Ltd.</strong> · India</p>
               <p class="tl-client">Client: NPCC</p>
@@ -685,9 +709,23 @@
 </main>
 
 <footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="#home" aria-label="Back to top"><span class="brand-mark" aria-hidden="true">VG</span><span class="brand-text">Vamsikrishna Gollapudi<span class="brand-sub">Azure DevOps · SRE</span></span></a>
+      <p class="muted small">Engineering reliable cloud platforms at scale.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#experience">Experience</a><a href="#work">Projects</a><a href="#lab">Architecture</a><a href="#ops">SRE Lab</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a class="icon-btn" href="https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic"><use href="#i-linkedin"/></svg></a>
+      <a class="icon-btn" href="https://github.com/vamsikrishna85" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ic"><use href="#i-github"/></svg></a>
+      <a class="icon-btn" href="mailto:vamsi.gollapudi85@gmail.com" aria-label="Email"><svg class="ic"><use href="#i-mail"/></svg></a>
+    </div>
+  </div>
   <div class="container footer-row">
-    <p>© <span id="year">2026</span> Vamsikrishna Gollapudi · Azure DevOps &amp; Site Reliability Engineering</p>
-    <p class="mono small">Hand-built · no frameworks · <a href="#home">Back to top ↑</a></p>
+    <p class="small">© <span id="year">2026</span> Vamsikrishna Gollapudi</p>
+    <p class="mono small"><a href="#home">Back to top ↑</a></p>
   </div>
 </footer>
 

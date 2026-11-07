@@ -40,7 +40,11 @@
   document.addEventListener('click', function (e) {
     if (navLinks.classList.contains('open') && !e.target.closest('.nav')) setMenu(false);
   });
-  var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 8); };
+  var progress = $('#scroll-progress');
+  var onScroll = function () {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+    if (progress) { var max = document.documentElement.scrollHeight - window.innerHeight; progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')'; }
+  };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   // Active section indicator
