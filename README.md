@@ -10,7 +10,7 @@ Personal portfolio for Azure DevOps & Site Reliability Engineering. Static site,
 | `labs.js` | Presentation mode (8 slides per project) and failure playbooks |
 | `voice-assistant.js/.css` | Optional narrated tour |
 | `pdf-viewer.js/.css` | Lazy-loaded PDF.js resume viewer |
-| `Vamsikrishna_Gollapudi_Resume.pdf` | Resume (view in page or download) |
+| `Vamsikrishna_Gollapudi_Resume.pdf` | Resume (view-only in the on-page viewer) |
 
 ## Editing content
 - **Projects / presentation slides:** `CASES` and `CASE_EXTRA` in `main.js`. A missing field shows a labelled placeholder in presentation mode.
