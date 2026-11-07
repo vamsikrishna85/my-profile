@@ -729,3 +729,22 @@ section[id], [id="top"] { scroll-margin-top: calc(var(--header-h) + 8px); }
 .footer-social { display: flex; gap: 8px; }
 .footer-social .icon-btn { color: var(--text-2); }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr; } .footer-links { justify-content: flex-start; } }
+
+/* ---------- Live tools ---------- */
+.tools-block { margin-top: 48px; }
+.tools-head { margin-bottom: 16px; }
+.tools-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.tool { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); overflow: hidden; transition: border-color .2s, transform .2s var(--ease); }
+.tool::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, var(--tc), transparent); }
+.tool:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.tool-top { display: flex; align-items: center; justify-content: space-between; }
+.tool-ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; color: var(--tc); background: color-mix(in srgb, var(--tc) 14%, transparent); }
+.tool-ic .ic { width: 22px; height: 22px; }
+.tool-live { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ok, #34d399); }
+.tool-live i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 0 currentColor; animation: tool-pulse 2s infinite; }
+@keyframes tool-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 60%, transparent); } 70%, 100% { box-shadow: 0 0 0 7px transparent; } }
+.tool h4 { margin: 0; font-size: 1.12rem; letter-spacing: -.01em; }
+.tool p { margin: 0; color: var(--text-2); font-size: .92rem; line-height: 1.6; }
+.tool-cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+@media (max-width: 860px) { .tools-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .tool-live i { animation: none; } }

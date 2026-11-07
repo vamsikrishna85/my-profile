@@ -17,8 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261107c">
-<link rel="stylesheet" href="voice-assistant.css?v=20261107c">
+<link rel="stylesheet" href="styles.css?v=20261107d">
+<link rel="stylesheet" href="voice-assistant.css?v=20261107d">
 <script>
   (function () {
     var d = document.documentElement; d.classList.add('js');
@@ -30,10 +30,10 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Vamsikrishna Gollapudi","jobTitle":"Azure DevOps & Site Reliability Engineer","address":{"@type":"PostalAddress","addressLocality":"Bengaluru","addressCountry":"IN"},"email":"mailto:vamsi.gollapudi85@gmail.com","url":"https://vamsikrishna85.github.io/my-profile/","sameAs":["https://www.linkedin.com/in/vamsikrishna-gollapudi-b2a490447","https://github.com/vamsikrishna85"],"knowsAbout":["Microsoft Azure","Azure DevOps","Site Reliability Engineering","Kubernetes","Azure Kubernetes Service","Terraform","GitHub Actions","Infrastructure as Code"]}
 </script>
-<script src="main.js?v=20261107c" defer></script>
-<script src="labs.js?v=20261107c" defer></script>
-<script src="voice-assistant.js?v=20261107c" defer></script>
-<script src="pdf-viewer.js?v=20261107c" defer></script>
+<script src="main.js?v=20261107d" defer></script>
+<script src="labs.js?v=20261107d" defer></script>
+<script src="voice-assistant.js?v=20261107d" defer></script>
+<script src="pdf-viewer.js?v=20261107d" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -514,6 +514,41 @@
     </div>
     <div class="cs-grid" id="cs-grid"><!-- rendered by main.js --></div>
     <noscript><p class="note">Enable JavaScript to open case studies and presentation mode. Every outcome is also listed under Experience.</p></noscript>
+
+    <div class="tools-block reveal" id="tools" aria-labelledby="tools-title">
+      <div class="tools-head">
+        <h3 class="repo-title" id="tools-title">Live tools you can try</h3>
+        <p class="muted">Built from the review checklists I use on real migrations. They run fully in your browser, and nothing you paste is uploaded.</p>
+      </div>
+      <div class="tools-grid">
+        <article class="tool" style="--tc: var(--cyan, #06b6d4)">
+          <div class="tool-top">
+            <span class="tool-ic" aria-hidden="true"><svg class="ic"><use href="#i-activity"/></svg></span>
+            <span class="tool-live mono"><i></i>Live</span>
+          </div>
+          <h4>Pipeline Doctor</h4>
+          <p>Paste an Azure DevOps YAML pipeline. It returns a 0–100 health score from 15 security, reliability, performance and governance checks, each with a line-level fix, and converts the pipeline to GitHub Actions with a migration checklist.</p>
+          <span class="chips chips-sm"><span>Azure Pipelines</span><span>GitHub Actions</span><span>OIDC</span><span>Tested in CI</span></span>
+          <div class="tool-cta">
+            <a class="btn btn-primary btn-sm" href="https://vamsikrishna85.github.io/pipeline-doctor/" target="_blank" rel="noopener">Try it live <svg class="ic"><use href="#i-ext"/></svg></a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/vamsikrishna85/pipeline-doctor" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg>Source</a>
+          </div>
+        </article>
+        <article class="tool" style="--tc: var(--violet, #8b5cf6)">
+          <div class="tool-top">
+            <span class="tool-ic" aria-hidden="true"><svg class="ic"><use href="#i-cloud"/></svg></span>
+            <span class="tool-live mono"><i></i>Live</span>
+          </div>
+          <h4>Azure Migration Wave Planner</h4>
+          <p>Upload a server inventory as CSV. It groups dependent servers so they move together, plans a foundation wave, a pilot and the waves after it within server and disk limits, flags risks such as legacy OS and cross-wave dependencies, and exports a cutover runbook.</p>
+          <span class="chips chips-sm"><span>Azure Migrate</span><span>Wave planning</span><span>Runbooks</span><span>Tested in CI</span></span>
+          <div class="tool-cta">
+            <a class="btn btn-primary btn-sm" href="https://vamsikrishna85.github.io/azure-migration-wave-planner/" target="_blank" rel="noopener">Try it live <svg class="ic"><use href="#i-ext"/></svg></a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/vamsikrishna85/azure-migration-wave-planner" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg>Source</a>
+          </div>
+        </article>
+      </div>
+    </div>
 
     <div class="repo-block reveal">
       <h3 class="repo-title">Open-source reference implementations</h3>
